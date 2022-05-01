@@ -7,7 +7,7 @@
         android:id="@+id/constraint_emaillogin_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_login">
+        android:background="@drawable/bg_intro">
 
         <ImageView
             android:id="@+id/image_emaillogin_back"
