@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_main.xml"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.tenutz.cracknotifier.ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_rootFragment"
+            app:destination="@id/rootFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rootFragment"
+        android:name="com.tenutz.cracknotifier.ui.root.RootFragment"
+        android:label="RootFragment" >
+        <action
+            android:id="@+id/action_rootFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_rootFragment_to_crackFragment"
+            app:destination="@id/crackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.tenutz.cracknotifier.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.tenutz.cracknotifier.ui.signup.SignupFragment"
+        android:label="SignupFragment" >
+        <action
+            android:id="@+id/action_signupFragment_to_rootFragment"
+            app:destination="@id/rootFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crackFragment"
+        android:name="com.tenutz.cracknotifier.ui.crack.CrackFragment"
+        android:label="CrackFragment" />
+</navigation>
