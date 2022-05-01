@@ -5,15 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.R
-import com.tenutz.cracknotifier.databinding.FragmentMyinfoBinding
 import com.tenutz.cracknotifier.databinding.FragmentRootBinding
 import com.tenutz.cracknotifier.ui.root.cracks.CracksFragment
-import com.tenutz.cracknotifier.ui.root.myinfo.MyInfoFragment
+import com.tenutz.cracknotifier.ui.root.robotcurrentsituation.RobotCurrentSituationFragment
+import com.tenutz.cracknotifier.ui.root.works.WorksFragment
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.RuntimeException
 
 @AndroidEntryPoint
 class RootFragment: Fragment() {
@@ -22,18 +19,21 @@ class RootFragment: Fragment() {
     val binding: FragmentRootBinding get() = _binding!!
 
     private lateinit var cracksFragment: CracksFragment
-    private lateinit var myInfoFragment: MyInfoFragment
+    private lateinit var worksFragment: WorksFragment
+    private lateinit var robotCurrentSituationFragment: RobotCurrentSituationFragment
 
     private val fragments: Array<Fragment>
         get() = arrayOf(
             cracksFragment,
-            myInfoFragment,
+            worksFragment,
+            robotCurrentSituationFragment,
         )
 
     private fun initFragments() {
 
         cracksFragment = CracksFragment()
-        myInfoFragment = MyInfoFragment()
+        worksFragment = WorksFragment()
+        robotCurrentSituationFragment = RobotCurrentSituationFragment()
 
         childFragmentManager.beginTransaction().apply {
             add(
@@ -43,8 +43,13 @@ class RootFragment: Fragment() {
             )
             add(
                 R.id.frame_root,
-                myInfoFragment,
-                "myInfoFragment"
+                worksFragment,
+                "worksFragment"
+            )
+            add(
+                R.id.frame_root,
+                robotCurrentSituationFragment,
+                "robotCurrentSituationFragment"
             )
         }.commit()
     }
@@ -53,6 +58,7 @@ class RootFragment: Fragment() {
         super.onCreate(savedInstanceState)
 
         initFragments()
+        selectFragment(cracksFragment)
     }
 
     override fun onCreateView(
@@ -69,10 +75,15 @@ class RootFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setOtherListeners()
+    }
+
+    private fun setOtherListeners() {
         binding.bnvRoot.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.menu_cracks -> selectFragment(cracksFragment)
-                R.id.menu_myinfo -> selectFragment(myInfoFragment)
+                R.id.menu_works -> selectFragment(worksFragment)
+                R.id.menu_robotcs -> selectFragment(robotCurrentSituationFragment)
             }
 
             return@setOnNavigationItemSelectedListener true

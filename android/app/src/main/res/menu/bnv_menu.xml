@@ -7,7 +7,12 @@
         android:icon="@drawable/ic_baseline_list" />
 
     <item
-        android:id="@+id/menu_myinfo"
-        android:title="내정보"
-        android:icon="@drawable/ic_baseline_person" />
+        android:id="@+id/menu_works"
+        android:title="작업목록"
+        android:icon="@drawable/ic_baseline_library_books" />
+
+    <item
+        android:id="@+id/menu_robotcs"
+        android:title="로봇현황"
+        android:icon="@drawable/ic_robot_solid" />
 </menu>
