@@ -6,16 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.databinding.FragmentCracksBinding
+import com.tenutz.cracknotifier.ui.common.BottomSheetFilterDialogFragment
 import com.tenutz.cracknotifier.ui.root.RootFragment
 import com.tenutz.cracknotifier.ui.root.RootFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CracksFragment : Fragment() {
 
     private var _binding: FragmentCracksBinding? = null
     val binding: FragmentCracksBinding get() = _binding!!
+
+    @Inject
+    lateinit var bottomSheetFilterDialogFragment: BottomSheetFilterDialogFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +45,10 @@ class CracksFragment : Fragment() {
         binding.btnCracksToSettings.setOnClickListener {
             (parentFragment as RootFragment).findNavController()
                 .navigate(RootFragmentDirections.actionRootFragmentToSettingsFragment())
+        }
+        binding.imageCracksFilter.setOnClickListener {
+
+            bottomSheetFilterDialogFragment.show(childFragmentManager, "bottomSheetFilterDialogFragment")
         }
     }
 

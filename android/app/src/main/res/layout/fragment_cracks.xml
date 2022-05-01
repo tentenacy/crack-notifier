@@ -35,13 +35,28 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
+                    <ImageView
                         android:id="@+id/btn_cracks_to_settings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TO SETTINGS"
+                        android:src="@drawable/ic_baseline_settings"
+                        android:padding="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/primaryTextColor"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/image_cracks_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_filter_list"
+                        android:padding="8dp"
+                        app:tint="@color/primaryTextColor"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btn_cracks_to_settings"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -59,6 +74,7 @@
                 android:id="@+id/recycler_cracks"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

@@ -20,4 +20,10 @@
     <color name="palette_1">#a171a8</color>
     <color name="palette_1_light">#d3a0da</color>
     <color name="palette_1_dark">#724579</color>
+
+    <color name="divider">#EFEFEF</color>
+
+    <color name="active">@color/secondaryColor</color>
+    <color name="inactive">#EFEFEF</color>
+    <color name="ripple">#8c8c8c</color>
 </resources>
