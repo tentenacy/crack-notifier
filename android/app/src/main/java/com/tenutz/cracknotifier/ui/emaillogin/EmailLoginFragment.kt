@@ -1,4 +1,4 @@
-package com.tenutz.cracknotifier.ui.root.cracks
+package com.tenutz.cracknotifier.ui.emaillogin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.tenutz.cracknotifier.databinding.FragmentCracksBinding
-import com.tenutz.cracknotifier.ui.root.RootFragment
-import com.tenutz.cracknotifier.ui.root.RootFragmentDirections
+import com.tenutz.cracknotifier.databinding.FragmentEmailLoginBinding
+import com.tenutz.cracknotifier.util.mainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CracksFragment : Fragment() {
+class EmailLoginFragment: Fragment() {
 
-    private var _binding: FragmentCracksBinding? = null
-    val binding: FragmentCracksBinding get() = _binding!!
+    private var _binding: FragmentEmailLoginBinding? = null
+    val binding: FragmentEmailLoginBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,7 +22,7 @@ class CracksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentCracksBinding.inflate(inflater, container, false)
+        _binding = FragmentEmailLoginBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -35,9 +34,11 @@ class CracksFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.btnCracksToSettings.setOnClickListener {
-            (parentFragment as RootFragment).findNavController()
-                .navigate(RootFragmentDirections.actionRootFragmentToSettingsFragment())
+        binding.imageEmailloginBack.setOnClickListener {
+            mainActivity().onBackPressed()
+        }
+        binding.btnEmaillogin.setOnClickListener {
+            findNavController().navigate(EmailLoginFragmentDirections.actionEmailLoginFragmentToRootFragment())
         }
     }
 

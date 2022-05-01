@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_emaillogin_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_login">
+
+        <ImageView
+            android:id="@+id/image_emaillogin_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_arrow_back"
+            android:padding="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_emaillogin_ftitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="이메일 로그인"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@id/image_emaillogin_back"
+            app:layout_constraintTop_toBottomOf="@id/image_emaillogin_back"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <View
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/secondaryTextColor"
+            app:layout_constraintStart_toStartOf="@id/text_emaillogin_ftitle"
+            app:layout_constraintTop_toBottomOf="@id/text_emaillogin_ftitle" />
+
+        <EditText
+            android:id="@+id/edit_emaillogin_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="8dp"
+            android:hint="이메일"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_emaillogin_h50p"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/edit_emaillogin_pwd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="8dp"
+            android:hint="비밀번호"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_emaillogin_h50p" />
+
+        <Button
+            android:id="@+id/btn_emaillogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/edit_emaillogin_pwd"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/edit_emaillogin_pwd"
+            app:layout_constraintTop_toBottomOf="@id/edit_emaillogin_pwd" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_emaillogin_h50p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

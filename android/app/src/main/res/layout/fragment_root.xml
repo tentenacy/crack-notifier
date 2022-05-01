@@ -21,6 +21,8 @@
             android:id="@+id/bnv_root"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:itemIconTint="@color/selector_menu"
+            app:itemTextColor="@color/selector_menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/drawable/bg_login.xml" value="0.375" />
+        <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/drawable/selector_menu.xml" value="0.375" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_crack.xml" value="0.2957427536231884" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_cracks.xml" value="0.22" />
+        <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_email_login.xml" value="0.25" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_login.xml" value="0.2957427536231884" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_myinfo.xml" value="0.25" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_root.xml" value="0.2957427536231884" />

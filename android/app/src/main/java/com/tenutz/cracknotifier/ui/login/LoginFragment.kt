@@ -33,10 +33,13 @@ class LoginFragment: Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.btnLoginToRoot.setOnClickListener {
+        binding.btnLoginToEmail.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToEmailLoginFragment())
+        }
+        binding.btnLoginKakao.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRootFragment())
         }
-        binding.btnLoginToSignup.setOnClickListener {
+        binding.textLoginToSignup.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
         }
     }
