@@ -39,9 +39,6 @@ class LoginFragment: Fragment() {
         binding.btnLoginKakao.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRootFragment())
         }
-        binding.textLoginToSignup.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
-        }
     }
 
     override fun onDestroyView() {

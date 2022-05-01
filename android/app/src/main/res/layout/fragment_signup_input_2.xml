@@ -4,20 +4,67 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tenutz.cracknotifier.ui.signup.ContainerSignupViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_signupinput2_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:background="@drawable/bg_intro">
 
         <TextView
+            android:id="@+id/text_signupinput2_desc_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SignupInput2Fragment"
+            android:text="가입을 위해 비밀번호를 입력해주세요."
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/palette_1"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="@id/edit_signupinput2_password"
+            app:layout_constraintBottom_toTopOf="@id/edit_signupinput2_password" />
+
+        <EditText
+            android:id="@+id/edit_signupinput2_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="8dp"
+            android:hint="비밀번호"
+            android:text="@={vm.password}"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/edit_signupinput2_passwordchk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/edit_signupinput2_passwordchk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="8dp"
+            android:hint="비밀번호 확인"
+            android:text="@={vm.passwordCheck}"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:layout_constraintTop_toBottomOf="@id/edit_signupinput2_password"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

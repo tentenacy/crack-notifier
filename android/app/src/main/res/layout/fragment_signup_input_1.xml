@@ -1,23 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tenutz.cracknotifier.ui.signup.ContainerSignupViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_signupinput1_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:background="@drawable/bg_intro">
 
         <TextView
+            android:id="@+id/text_signupinput1_desc_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SignupInput1Fragment"
+            android:text="가입을 위해 이메일을 입력해주세요."
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/palette_1"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="@id/edit_signupinput1_email"
+            app:layout_constraintBottom_toTopOf="@id/edit_signupinput1_email" />
+
+        <EditText
+            android:id="@+id/edit_signupinput1_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginBottom="8dp"
+            android:hint="이메일"
+            android:text="@={vm.email}"
+            android:importantForAutofill="no"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/secondaryTextColor"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

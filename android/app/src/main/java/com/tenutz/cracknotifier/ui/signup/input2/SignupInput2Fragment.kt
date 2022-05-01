@@ -13,6 +13,7 @@ import com.tenutz.cracknotifier.databinding.FragmentSignupInput1Binding
 import com.tenutz.cracknotifier.databinding.FragmentSignupInput2Binding
 import com.tenutz.cracknotifier.ui.signup.ContainerSignupFragment
 import com.tenutz.cracknotifier.util.mainActivity
+import com.tenutz.cracknotifier.util.signupFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +31,7 @@ class SignupInput2Fragment: Fragment() {
                 findNavController().navigateUp()
             }
         }
-        (parentFragment?.parentFragment as ContainerSignupFragment).mainActivity().onBackPressedDispatcher.addCallback(this, callback)
+        signupFragment().mainActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     override fun onDetach() {
@@ -47,13 +48,27 @@ class SignupInput2Fragment: Fragment() {
 
         _binding = FragmentSignupInput2Binding.inflate(inflater, container, false)
 
+        binding.vm = signupFragment().viewModel
+        binding.lifecycleOwner = this
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (parentFragment?.parentFragment as ContainerSignupFragment).binding.btnContainersignupNext.setOnClickListener {
+        initViews()
+
+        setOnClickListeners()
+    }
+
+    private fun initViews() {
+        signupFragment().binding.textContainersignupFtitle.text = "가입하기 (2 / 3)"
+        signupFragment().binding.btnContainersignupNext.text = "다음"
+    }
+
+    private fun setOnClickListeners() {
+        signupFragment().binding.btnContainersignupNext.setOnClickListener {
             findNavController().navigate(SignupInput2FragmentDirections.actionSignupInput2FragmentToSignupInput3Fragment())
         }
     }

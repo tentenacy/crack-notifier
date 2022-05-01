@@ -40,6 +40,9 @@ class EmailLoginFragment: Fragment() {
         binding.btnEmaillogin.setOnClickListener {
             findNavController().navigate(EmailLoginFragmentDirections.actionEmailLoginFragmentToRootFragment())
         }
+        binding.textEmailloginToSignup.setOnClickListener {
+            findNavController().navigate(EmailLoginFragmentDirections.actionEmailLoginFragmentToContainerSignupFragment())
+        }
     }
 
     override fun onDestroyView() {

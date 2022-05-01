@@ -87,6 +87,34 @@
             app:layout_constraintStart_toStartOf="@+id/edit_emaillogin_pwd"
             app:layout_constraintTop_toBottomOf="@id/edit_emaillogin_pwd" />
 
+        <TextView
+            android:id="@+id/text_emaillogin_label_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="처음이신가요?"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintEnd_toStartOf="@id/text_emaillogin_to_signup"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="계정이 없으신가요?" />
+
+        <TextView
+            android:id="@+id/text_emaillogin_to_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="가입하기"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:textColor="@color/palette_1_dark"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/text_emaillogin_label_signup"
+            app:layout_constraintBottom_toBottomOf="@id/text_emaillogin_label_signup"
+            app:layout_constraintStart_toEndOf="@id/text_emaillogin_label_signup"
+            app:layout_constraintEnd_toEndOf="parent" />
+        
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_emaillogin_h50p"
             android:layout_width="wrap_content"

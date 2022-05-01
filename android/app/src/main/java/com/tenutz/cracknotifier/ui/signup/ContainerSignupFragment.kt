@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.tenutz.cracknotifier.R
 import com.tenutz.cracknotifier.databinding.FragmentContainerSignupBinding
@@ -16,6 +17,8 @@ class ContainerSignupFragment: Fragment() {
 
     private var _binding: FragmentContainerSignupBinding? = null
     val binding: FragmentContainerSignupBinding get() = _binding!!
+
+    val viewModel: ContainerSignupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
