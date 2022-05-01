@@ -2,9 +2,16 @@ package com.tenutz.cracknotifier.ui.root.cracks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.R
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
+import com.tenutz.cracknotifier.util.dummy.Dummies
+import com.tenutz.cracknotifier.util.dummy.DummyCracks
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,6 +32,9 @@ class CracksViewModel @Inject constructor(
     private val _dateToText = MutableLiveData<String?>(null)
     val dateToText: LiveData<String?> = _dateToText
 
+    private val _tempCracks = MutableLiveData<List<DummyCracks>>()
+    val tempCracks: LiveData<List<DummyCracks>> = _tempCracks
+
     fun setTermCheckedRadioId(id: Int?) {
         _termCheckedRadioId.value = id
     }
@@ -39,6 +49,18 @@ class CracksViewModel @Inject constructor(
 
     fun setDateToText(dateToText: String?) {
         _dateToText.value = dateToText
+    }
+
+    fun tempCracks() {
+        Single.just(Dummies.cracks)
+            .delay(200, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _tempCracks.postValue(it)
+            }) { t ->
+                Logger.e("${t}")
+            }
     }
 
 }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="region"
+            type="String" />
+
+        <variable
+            name="createdAt"
+            type="String" />
+
+        <variable
+            name="accuracy"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_icracks_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/image_icracks_thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/sample_crack" />
+
+        <TextView
+            android:id="@+id/text_icrack_region"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:text="@{region}"
+            app:layout_constraintBottom_toTopOf="@id/text_icrack_at"
+            app:layout_constraintEnd_toStartOf="@+id/text_icrack_accuracy"
+            app:layout_constraintStart_toEndOf="@id/image_icracks_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="정왕동" />
+
+        <TextView
+            android:id="@+id/text_icrack_at"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:text="@{createdAt}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/text_icrack_region"
+            app:layout_constraintStart_toStartOf="@+id/text_icrack_region"
+            app:layout_constraintTop_toBottomOf="@id/text_icrack_region"
+            tools:text="2022-05-02 12:59:33" />
+
+        <TextView
+            android:id="@+id/text_icrack_label_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="판단율"
+            android:textColor="@color/palette_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/text_icrack_accuracy"
+            app:layout_constraintEnd_toEndOf="@+id/text_icrack_accuracy"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_icrack_accuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/palette_1"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:text='@{accuracy+"%"}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_icrack_label_accuracy"
+            tools:text="98%" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
