@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.databinding.FragmentCracksBinding
-import com.tenutz.cracknotifier.databinding.FragmentLoginBinding
 import com.tenutz.cracknotifier.ui.root.RootFragment
 import com.tenutz.cracknotifier.ui.root.RootFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CracksFragment: Fragment() {
+class CracksFragment : Fragment() {
 
     private var _binding: FragmentCracksBinding? = null
     val binding: FragmentCracksBinding get() = _binding!!
@@ -36,9 +35,13 @@ class CracksFragment: Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.btnCracksToCrack.setOnClickListener {
-            (parentFragment?.parentFragment as RootFragment).findNavController()
+        /*binding.btnCracksToCrack.setOnClickListener {
+            (parentFragment as RootFragment).findNavController()
                 .navigate(RootFragmentDirections.actionRootFragmentToCrackFragment())
+        }*/
+        binding.btnCracksToSettings.setOnClickListener {
+            (parentFragment as RootFragment).findNavController()
+                .navigate(RootFragmentDirections.actionRootFragmentToSettingsFragment())
         }
     }
 
