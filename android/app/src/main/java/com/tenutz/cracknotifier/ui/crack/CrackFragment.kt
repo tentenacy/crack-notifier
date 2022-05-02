@@ -20,7 +20,6 @@ class CrackFragment: Fragment() {
     val binding: FragmentCrackBinding get() = _binding!!
 
     val viewModel: CrackViewModel by viewModels()
-
     val args: CrackFragmentArgs by navArgs()
 
     override fun onCreateView(

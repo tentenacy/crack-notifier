@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.databinding.FragmentWorksBinding
 import com.tenutz.cracknotifier.ui.root.RootFragment
 import com.tenutz.cracknotifier.ui.root.RootFragmentDirections
+import com.tenutz.cracknotifier.util.mainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +25,8 @@ class WorksFragment: Fragment() {
     ): View? {
 
         _binding = FragmentWorksBinding.inflate(inflater, container, false)
+
+        mainActivity().setSupportActionBar(binding.toolbarWorks)
 
         return binding.root
     }

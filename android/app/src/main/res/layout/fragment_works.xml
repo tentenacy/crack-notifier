@@ -16,7 +16,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_works"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraint_works_container_toolbar"
@@ -69,6 +70,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_cracks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_post_add"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:rippleColor="@color/secondaryDarkColor"
+            app:layout_behavior=".util.view.ScrollFABBehavior"
+            app:layout_collapseMode="parallax"
+            android:layout_gravity="end|bottom" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
