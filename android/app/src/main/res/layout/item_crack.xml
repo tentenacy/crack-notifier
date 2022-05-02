@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/palette_1"
-            android:textSize="40dp"
+            android:textSize="40sp"
             android:textStyle="bold"
             android:text='@{accuracy+"%"}'
             app:layout_constraintBottom_toBottomOf="parent"

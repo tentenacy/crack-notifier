@@ -1,5 +1,8 @@
 package com.tenutz.cracknotifier.util.dummy
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class DummyCracks(
     val id: Int,
     val imageUrl: String,
@@ -7,6 +10,20 @@ data class DummyCracks(
     val createdAt: String,
     val accuracy: Float,
 )
+
+@Parcelize
+data class DummyCrackDetail(
+    val id: Int,
+    val imageUrl: String,
+    val address: String,
+    val roadAddress: String,
+    val createdAt: String,
+    val accuracy: Float,
+    val latitude: Float,
+    val longitude: Float,
+    val x: Float,
+    val y: Float,
+): Parcelable
 
 object Dummies {
 
@@ -80,6 +97,129 @@ object Dummies {
             "정왕본동",
             "2022-05-02 12:59:33",
             100.0f,
+        ),
+    )
+
+    val crackDetails = listOf(
+        DummyCrackDetail(
+            1,
+            "https://user-images.githubusercontent.com/76826021/166154884-b7683781-9c69-4001-89f5-c6748d6054c1.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            0.0f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            2,
+            "https://user-images.githubusercontent.com/76826021/166154916-df65412b-6765-425b-917c-8b9451652534.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            99.9998f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            3,
+            "https://user-images.githubusercontent.com/76826021/166154929-e376ceaa-301e-4b6b-98d2-52070f3bf8de.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            100.0f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            4,
+            "https://user-images.githubusercontent.com/76826021/166154947-f617e0ac-700e-4d6e-9a23-00bbef91367c.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            96.5264f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            5,
+            "https://user-images.githubusercontent.com/76826021/166155041-20de28c5-24de-496b-b397-911964f0650e.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            100.0f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            6,
+            "https://user-images.githubusercontent.com/76826021/166154884-b7683781-9c69-4001-89f5-c6748d6054c1.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            0.0f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            7,
+            "https://user-images.githubusercontent.com/76826021/166154916-df65412b-6765-425b-917c-8b9451652534.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            99.9998f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            8,
+            "https://user-images.githubusercontent.com/76826021/166154929-e376ceaa-301e-4b6b-98d2-52070f3bf8de.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            100.0f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            9,
+            "https://user-images.githubusercontent.com/76826021/166154947-f617e0ac-700e-4d6e-9a23-00bbef91367c.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            96.5264f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
+        ),
+        DummyCrackDetail(
+            10,
+            "https://user-images.githubusercontent.com/76826021/166155041-20de28c5-24de-496b-b397-911964f0650e.jpg",
+            "경기도 시흥시 정왕동 2121-1 한국공학대학교",
+            "경기도 시흥시 산기대학로 237 한국공학대학교",
+            "2022년 05월 02일 오전 10:18",
+            100.0f,
+            37.338853f,
+            126.734178f,
+            0.9f,
+            1.5f,
         ),
     )
 }

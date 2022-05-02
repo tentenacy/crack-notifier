@@ -31,6 +31,7 @@ class TempCracksAdapter(val listener: (Int) -> Unit): RecyclerView.Adapter<TempC
         }
 
         fun bind(cracks: DummyCracks) {
+            id = cracks.id
             binding.region = cracks.region
             binding.createdAt = cracks.createdAt
             binding.accuracy = cracks.accuracy.toInt().toString()

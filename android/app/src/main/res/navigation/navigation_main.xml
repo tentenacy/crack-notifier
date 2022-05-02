@@ -47,8 +47,11 @@
         android:name="com.tenutz.cracknotifier.ui.crack.CrackFragment"
         android:label="CrackFragment" >
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="crack"
+            app:argType="com.tenutz.cracknotifier.util.dummy.DummyCrackDetail" />
+        <argument
+            android:name="imageBitmap"
+            app:argType="android.graphics.Bitmap" />
     </fragment>
     <fragment
         android:id="@+id/emailLoginFragment"

@@ -6,6 +6,7 @@ import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.R
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import com.tenutz.cracknotifier.util.dummy.Dummies
+import com.tenutz.cracknotifier.util.dummy.DummyCrackDetail
 import com.tenutz.cracknotifier.util.dummy.DummyCracks
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -21,6 +22,7 @@ class CracksViewModel @Inject constructor(
 
     companion object {
         const val EVENT_SEARCH = 1000
+        const val EVENT_NAVIGATE_TO_CRACK = 1001
     }
 
     private val _termCheckedRadioId = MutableLiveData<Int?>(R.id.radiobtn_bsfiltercracks_whole)
@@ -61,6 +63,20 @@ class CracksViewModel @Inject constructor(
             }) { t ->
                 Logger.e("${t}")
             }
+    }
+
+    fun tempCrack(id: Int) {
+        Dummies.crackDetails.find { it.id == id }?.let {
+            Single.just(it)
+                .delay(200, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    viewEvent(Pair(EVENT_NAVIGATE_TO_CRACK, it))
+                }) { t ->
+                    Logger.e("${t}")
+                }
+        }
     }
 
 }
