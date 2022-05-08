@@ -5,7 +5,9 @@ import com.tenutz.cracknotifier.web.api.dto.common.TokenResponse;
 import com.tenutz.cracknotifier.web.api.dto.user.LoginRequest;
 import com.tenutz.cracknotifier.web.api.dto.user.SignupRequest;
 import com.tenutz.cracknotifier.web.api.dto.user.UserDetailsResponse;
+import com.tenutz.cracknotifier.web.api.dto.user.UserRobotRegisterRequest;
 import com.tenutz.cracknotifier.web.api.service.AuthService;
+import com.tenutz.cracknotifier.web.api.service.RobotService;
 import com.tenutz.cracknotifier.web.api.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ public class UserApiController {
 
     private final AuthService authService;
     private final UserService userService;
+    private final RobotService robotService;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping
@@ -47,5 +50,10 @@ public class UserApiController {
     @GetMapping("/details")
     public UserDetailsResponse userDetails() {
         return userService.details();
+    }
+
+    @PostMapping("/robots")
+    public void registerRobot(@RequestBody @Validated UserRobotRegisterRequest userRobotRegisterRequest) {
+        robotService.registerUserRobot(userRobotRegisterRequest);
     }
 }

@@ -1,6 +1,7 @@
 package com.tenutz.cracknotifier.web.api.dto.user;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class LoginRequest {
 
     @Email
@@ -23,12 +25,6 @@ public class LoginRequest {
     private String password;
 
     private String provider;
-
-    public LoginRequest(String email, String password, String provider) {
-        this.email = email;
-        this.password = password;
-        this.provider = provider;
-    }
 
     public LoginRequest(String email, String password) {
         this.email = email;

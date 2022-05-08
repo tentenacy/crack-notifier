@@ -12,4 +12,10 @@ public class CEntityNotFoundException extends CBusinessException {
             super(ErrorCode.USER_NOT_FOUND);
         }
     }
+
+    public static class CRobotNotFoundException extends CEntityNotFoundException {
+        public CRobotNotFoundException() {
+            super(ErrorCode.ROBOT_NOT_FOUND);
+        }
+    }
 }

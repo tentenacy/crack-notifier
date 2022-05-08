@@ -1,6 +1,7 @@
 package com.tenutz.cracknotifier.web.api.dto.user;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class SignupRequest {
 
     @Email
@@ -29,13 +31,6 @@ public class SignupRequest {
 
     @Pattern(regexp = "^kakao$|^facebook$|^naver$|^google$")
     private String provider;
-
-    public SignupRequest(String email, String password, String username, String provider) {
-        this.email = email;
-        this.password = password;
-        this.username = username;
-        this.provider = provider;
-    }
 
     public SignupRequest(String email, String password, String username) {
         this.email = email;

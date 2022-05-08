@@ -1,6 +1,7 @@
 package com.tenutz.cracknotifier.domain.user;
 
 import com.tenutz.cracknotifier.domain.base.BaseTimeEntity;
+import com.tenutz.cracknotifier.domain.robot.Robot;
 import com.tenutz.cracknotifier.util.manager.SeqManager;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 @DynamicInsert
 @DynamicUpdate
@@ -41,6 +43,10 @@ public class User extends BaseTimeEntity implements UserDetails {
     @Column(nullable = false, updatable = false, length = 15)
     @Id
     private String seq;
+
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "robot_seq")
+    private Robot robot;
 
     @Column(nullable = false, unique = true, length = 100)
     private String email;
@@ -75,6 +81,10 @@ public class User extends BaseTimeEntity implements UserDetails {
         if(StringUtils.hasText(username)) {
             this.username = username;
         }
+    }
+
+    public void registerRobot(Robot robot) {
+        setRobot(robot);
     }
 
     @Override
