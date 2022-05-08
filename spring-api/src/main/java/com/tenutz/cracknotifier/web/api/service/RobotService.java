@@ -49,7 +49,10 @@ public class RobotService {
         EntityUtils.userThrowable(userRepository, SecurityUtils.user().getSeq()).registerRobot(foundRobot);
     }
 
-
+    @Transactional
+    public void deregisterUserRobot() {
+        EntityUtils.userThrowable(userRepository, SecurityUtils.user().getSeq()).deregisterRobot();
+    }
 
     private String createModelNumber() {
         return new Random().ints(48, 122)

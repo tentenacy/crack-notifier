@@ -56,4 +56,10 @@ public class UserApiController {
     public void registerRobot(@RequestBody @Validated UserRobotRegisterRequest userRobotRegisterRequest) {
         robotService.registerUserRobot(userRobotRegisterRequest);
     }
+
+    @DeleteMapping("/robots")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deregisterUserRobot() {
+        robotService.deregisterUserRobot();
+    }
 }

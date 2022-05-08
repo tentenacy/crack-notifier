@@ -87,6 +87,10 @@ public class User extends BaseTimeEntity implements UserDetails {
         setRobot(robot);
     }
 
+    public void deregisterRobot() {
+        setRobot(null);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles
