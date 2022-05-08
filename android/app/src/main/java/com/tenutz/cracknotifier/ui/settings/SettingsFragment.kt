@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.databinding.FragmentRootBinding
 import com.tenutz.cracknotifier.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +29,14 @@ class SettingsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.imageSettingsBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {
