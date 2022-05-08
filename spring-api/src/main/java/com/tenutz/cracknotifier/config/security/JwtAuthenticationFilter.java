@@ -2,7 +2,6 @@ package com.tenutz.cracknotifier.config.security;
 
 import com.tenutz.cracknotifier.web.api.dto.common.ErrorCode;
 import com.tenutz.cracknotifier.web.api.exception.business.CEntityNotFoundException;
-import com.tenutz.cracknotifier.web.api.exception.security.CSecurityException;
 import com.tenutz.cracknotifier.web.api.exception.security.CSecurityException.CAuthenticationEntryPointException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

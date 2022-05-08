@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -92,11 +93,13 @@ public class JwtProvider {
         }
     }
 
-    /**
-     * HTTP Request의 Header에서 Token Parsing -> "X-AUTH-TOKEN: jwt"
-     */
     public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("X-AUTH-TOKEN");
+        String authorization = request.getHeader("Authorization");
+        if(StringUtils.hasText(authorization) && authorization.startsWith("Bearer") && authorization.split(" ").length >= 2) {
+            return authorization.split(" ")[1];
+        } else {
+            return null;
+        }
     }
 
     /**

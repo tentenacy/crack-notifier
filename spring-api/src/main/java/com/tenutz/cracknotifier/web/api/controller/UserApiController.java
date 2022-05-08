@@ -4,11 +4,13 @@ import com.tenutz.cracknotifier.web.api.dto.common.TokenRequest;
 import com.tenutz.cracknotifier.web.api.dto.common.TokenResponse;
 import com.tenutz.cracknotifier.web.api.dto.user.LoginRequest;
 import com.tenutz.cracknotifier.web.api.dto.user.SignupRequest;
+import com.tenutz.cracknotifier.web.api.dto.user.UserDetailsResponse;
 import com.tenutz.cracknotifier.web.api.service.AuthService;
 import com.tenutz.cracknotifier.web.api.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserApiController {
 
     private final AuthService authService;
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping
@@ -39,5 +42,10 @@ public class UserApiController {
     @ResponseStatus(HttpStatus.CREATED)
     public TokenResponse reissue(@RequestBody @Validated TokenRequest request) {
         return authService.reissue(request);
+    }
+
+    @GetMapping("/details")
+    public UserDetailsResponse userDetails() {
+        return userService.details();
     }
 }
