@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/users",
                         "/users/token",
                         "/users/token/expiration",
+                        "/robots/{[a-z]+_\\d+}/cracks",
                         "/users/social/kakao/**",
                         "/users/social/google/**",
                         "/users/social/naver/**",

@@ -44,7 +44,7 @@ public class User extends BaseTimeEntity implements UserDetails {
     @Id
     private String seq;
 
-    @OneToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "robot_seq")
     private Robot robot;
 
@@ -78,9 +78,7 @@ public class User extends BaseTimeEntity implements UserDetails {
     }
 
     public void update(String username) {
-        if(StringUtils.hasText(username)) {
-            this.username = username;
-        }
+        setUsername(username);
     }
 
     public void registerRobot(Robot robot) {

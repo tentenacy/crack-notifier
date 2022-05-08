@@ -16,13 +16,19 @@ public class Address {
 
     @NotEmpty
     private String addressName;
+
     private String roadAddressName;
+
     @NotEmpty
     private String region1DepthName;
+
     @NotEmpty
     private String region2DepthName;
+
     @NotEmpty
     private String region3DepthName;
+
     @NotEmpty
     private String zoneNo;
+
 }

@@ -12,6 +12,12 @@ public class CIOException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
+    public static class CMLCommunicationException extends CIOException {
+        public CMLCommunicationException() {
+            super(ErrorCode.ML_COMMUNICATION_ERROR);
+        }
+    }
+
     public static class CCloudCommunicationException extends CIOException {
 
         public CCloudCommunicationException() {

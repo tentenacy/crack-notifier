@@ -37,6 +37,7 @@ public class WebClientConfiguration {
                         new ReactorClientHttpConnector(
                                 HttpClient
                                         .create()
+                                        .wiretap(true)
                                         .secure(
                                                 ThrowingConsumer.unchecked(
                                                         sslContextSpec -> sslContextSpec.sslContext(

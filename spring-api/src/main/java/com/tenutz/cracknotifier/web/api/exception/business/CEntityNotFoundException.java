@@ -18,4 +18,9 @@ public class CEntityNotFoundException extends CBusinessException {
             super(ErrorCode.ROBOT_NOT_FOUND);
         }
     }
+    public static class CCrackNotFoundException extends CEntityNotFoundException {
+        public CCrackNotFoundException() {
+            super(ErrorCode.CRACK_NOT_FOUND);
+        }
+    }
 }

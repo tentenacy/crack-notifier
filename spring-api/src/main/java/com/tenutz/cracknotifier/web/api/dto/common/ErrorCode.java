@@ -25,6 +25,7 @@ public enum ErrorCode {
     USER_NOT_AUTHENTICATION(HttpStatus.UNAUTHORIZED.value(), "CRN-1002", "인증된 사용자가 아닙니다."),
     USER_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1003", "사용자가 존재하지 않습니다."),
     ROBOT_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1004", "로봇이 존재하지 않습니다."),
+    CRACK_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1005", "균열이 존재하지 않습니다."),
 
     /**
      * SOCIAL
@@ -44,12 +45,13 @@ public enum ErrorCode {
     TOKEN_PARSE_ERROR(HttpStatus.UNAUTHORIZED.value(), "CRN-3002", "해석할 수 없는 토큰입니다."),
 
     /**
-     * SECURITY
+     * IO
      * CRN-4xxx
      */
     FILE_CONVERT_FAILED(HttpStatus.BAD_REQUEST.value(), "CRN-4000", "파일을 변환할 수 없습니다."),
     INVALID_FILE_FORMAT(HttpStatus.BAD_REQUEST.value(), "CRN-4001", "잘못된 형식의 파일입니다."),
     CLOUD_COMMUNICATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "CRN-4002", "파일 업로드 중 오류가 발생했습니다."),
+    ML_COMMUNICATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "CRN-4003", "ML 서버에 파일 업로드 중 오류가 발생했습니다."),
             ;
 
     private final String code;

@@ -46,6 +46,7 @@ application-test.yml
 application-jwt.yml
 application-social.yml
 application-cloud.yml
+application-ext.yml
 
 images/
 
