@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,
                         "/users",
                         "/users/token",
-                        "/users/token/reissue",
+                        "/users/token/expiration",
                         "/users/social/kakao/**",
                         "/users/social/google/**",
                         "/users/social/naver/**",
