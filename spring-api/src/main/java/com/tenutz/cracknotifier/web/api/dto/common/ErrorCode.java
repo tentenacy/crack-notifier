@@ -30,6 +30,9 @@ public enum ErrorCode {
      * CRN-2xxx
      */
     SOCIAL_COMMUNICATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "CRN-2000", "소셜 인증 과정 중 오류가 발생했습니다."),
+    SOCIAL_AGREEMENT_ERROR(HttpStatus.BAD_REQUEST.value(), "CRN-2001", "필수동의 항목에 대해 동의가 필요합니다."),
+    INVALID_SOCIAL_TYPE(HttpStatus.BAD_REQUEST.value(), "CRN-2002", "알 수 없는 소셜 타입입니다."),
+    SOCIAL_TOKEN_VALID_FAILED(HttpStatus.UNAUTHORIZED.value(), "CRN-2003", "소셜 액세스 토큰 검증에 실패했습니다."),
 
     /**
      * SECURITY
@@ -38,7 +41,14 @@ public enum ErrorCode {
     ACCESS_TOKEN_ERROR(HttpStatus.UNAUTHORIZED.value(), "CRN-3000", "액세스 토큰이 만료되거나 잘못된 값입니다."),
     REFRESH_TOKEN_ERROR(HttpStatus.UNAUTHORIZED.value(), "CRN-3001", "리프레시 토큰이 만료되거나 잘못된 값입니다."),
     TOKEN_PARSE_ERROR(HttpStatus.UNAUTHORIZED.value(), "CRN-3002", "해석할 수 없는 토큰입니다."),
-    SIGNATURE_ERROR(HttpStatus.UNAUTHORIZED.value(), "CRN-3003", "JWT의 생성과 복호화할 때의 비밀키가 서로 다릅니다."),
+
+    /**
+     * SECURITY
+     * CRN-4xxx
+     */
+    FILE_CONVERT_FAILED(HttpStatus.BAD_REQUEST.value(), "CRN-4000", "파일을 변환할 수 없습니다."),
+    INVALID_FILE_FORMAT(HttpStatus.BAD_REQUEST.value(), "CRN-4001", "잘못된 형식의 파일입니다."),
+    CLOUD_COMMUNICATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "CRN-4002", "파일 업로드 중 오류가 발생했습니다."),
             ;
 
     private final String code;

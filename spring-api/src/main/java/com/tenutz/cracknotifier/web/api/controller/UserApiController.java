@@ -1,5 +1,7 @@
 package com.tenutz.cracknotifier.web.api.controller;
 
+import com.tenutz.cracknotifier.web.api.dto.common.TokenResponse;
+import com.tenutz.cracknotifier.web.api.dto.user.LoginRequest;
 import com.tenutz.cracknotifier.web.api.dto.user.SignupRequest;
 import com.tenutz.cracknotifier.web.api.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +25,11 @@ public class UserApiController {
     public void signup(@RequestBody @Validated SignupRequest signupRequest) {
         signupRequest.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
         userService.signup(signupRequest);
+    }
+
+    @PostMapping("/token")
+    @ResponseStatus(HttpStatus.CREATED)
+    public TokenResponse login(@RequestBody @Validated LoginRequest loginRequest) {
+        return userService.login(loginRequest);
     }
 }

@@ -1,7 +1,6 @@
 package com.tenutz.cracknotifier.web.api.service.security;
 
 import com.tenutz.cracknotifier.domain.user.UserRepository;
-import com.tenutz.cracknotifier.web.api.exception.business.CEntityNotFoundException;
 import com.tenutz.cracknotifier.web.api.exception.business.CEntityNotFoundException.CUserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +16,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userPk) throws UsernameNotFoundException {
-        return userRepository.findById(Long.parseLong(userPk)).orElseThrow(CUserNotFoundException::new);
+        return userRepository.findById(userPk).orElseThrow(CUserNotFoundException::new);
     }
 }

@@ -12,4 +12,10 @@ public class CInvalidValueException extends CBusinessException {
             super(ErrorCode.ALREADY_SIGNEDUP);
         }
     }
+
+    public static class CEmailLoginFailedException extends CInvalidValueException {
+        public CEmailLoginFailedException() {
+            super(ErrorCode.LOGIN_FAIL);
+        }
+    }
 }
