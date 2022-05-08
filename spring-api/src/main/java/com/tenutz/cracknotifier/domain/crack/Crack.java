@@ -1,5 +1,6 @@
 package com.tenutz.cracknotifier.domain.crack;
 
+import com.tenutz.cracknotifier.domain.base.BaseTimeEntity;
 import com.tenutz.cracknotifier.domain.common.Address;
 import com.tenutz.cracknotifier.domain.robot.Robot;
 import com.tenutz.cracknotifier.util.manager.SeqManager;
@@ -22,7 +23,7 @@ import static javax.persistence.FetchType.LAZY;
 @Setter(value = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table
-public class Crack {
+public class Crack extends BaseTimeEntity {
 
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_manager_crak")
     @GenericGenerator(name = "seq_manager_crak", strategy = "com.tenutz.cracknotifier.util.manager.SeqManager", parameters = {
