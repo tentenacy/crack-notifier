@@ -1,6 +1,7 @@
 package com.tenutz.cracknotifier.web.client;
 
 import com.tenutz.cracknotifier.util.file.FileSystemResource;
+import com.tenutz.cracknotifier.web.api.exception.io.CIOException.CMLCommunicationException;
 import com.tenutz.cracknotifier.web.client.dto.ml.PredictionMLResponse;
 import com.tenutz.cracknotifier.web.api.exception.io.CIOException;
 import lombok.RequiredArgsConstructor;
@@ -34,11 +35,11 @@ public class MLClient {
                 .retrieve()
                 .onStatus(HttpStatus::is4xxClientError, mlResponse -> {
                     log.debug("mlResponse = " + mlResponse);
-                    return Mono.error(new CIOException.CMLCommunicationException());
+                    return Mono.error(new CMLCommunicationException());
                 })
                 .onStatus(HttpStatus::is5xxServerError, mlResponse -> {
                     log.debug("mlResponse = " + mlResponse);
-                    return Mono.error(new CIOException.CMLCommunicationException());
+                    return Mono.error(new CMLCommunicationException());
                 })
                 .bodyToMono(PredictionMLResponse.class)
                 .block();

@@ -1,6 +1,7 @@
 package com.tenutz.cracknotifier.web.api.controller;
 
 import com.tenutz.cracknotifier.web.api.dto.common.CommonCondition;
+import com.tenutz.cracknotifier.web.api.dto.crack.CrackDetailsResponse;
 import com.tenutz.cracknotifier.web.api.dto.crack.CracksResponse;
 import com.tenutz.cracknotifier.web.api.service.CrackService;
 import com.tenutz.cracknotifier.web.api.service.cloud.FileUploadService;
@@ -24,6 +25,11 @@ public class CrackApiController {
     @GetMapping
     public Page<CracksResponse> cracks(@Validated CommonCondition cond, Pageable pageable) {
         return crackService.cracks(cond, pageable);
+    }
+
+    @GetMapping("/{crackId}/details")
+    public CrackDetailsResponse details(@PathVariable String crackId) {
+        return crackService.details(crackId);
     }
 
     @DeleteMapping("/{crackId}")

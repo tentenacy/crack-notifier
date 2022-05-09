@@ -10,6 +10,7 @@ import com.tenutz.cracknotifier.util.EntityUtils;
 import com.tenutz.cracknotifier.util.FileUtils;
 import com.tenutz.cracknotifier.web.api.dto.common.CommonCondition;
 import com.tenutz.cracknotifier.web.api.dto.crack.CrackCreateRequest;
+import com.tenutz.cracknotifier.web.api.dto.crack.CrackDetailsResponse;
 import com.tenutz.cracknotifier.web.api.dto.crack.CrackDetectRequest;
 import com.tenutz.cracknotifier.web.api.dto.crack.CracksResponse;
 import com.tenutz.cracknotifier.web.api.exception.business.CEntityNotFoundException;
@@ -62,5 +63,9 @@ public class CrackService {
             throw new CRobotNotFoundException();
         }
         return crackRepository.cracks(cond, pageable, foundUser.getRobot());
+    }
+
+    public CrackDetailsResponse details(String crackSeq) {
+        return new CrackDetailsResponse(EntityUtils.crackThrowable(crackRepository, crackSeq));
     }
 }
