@@ -16,7 +16,7 @@ import java.util.Date;
 public abstract class BaseCreationTimeEntity {
 
     @CreatedDate
-    @Column(updatable = false, columnDefinition="datetime(6) default now(6)")
-    private Date createdAt;
+    @Column(updatable = false, columnDefinition="timestamp(6) default now(6)")
+    private LocalDateTime createdAt;
 
 }

@@ -19,8 +19,8 @@ public class RobotDetailsResponse {
     private float depth;
     private float height;
     private float weight;
-    private Date createdAt;
-    private Date lastModifiedAt;
+    private String createdAt;
+    private String lastModifiedAt;
 
     public RobotDetailsResponse(Robot robot) {
         this.seq = robot.getSeq();
@@ -30,7 +30,7 @@ public class RobotDetailsResponse {
         this.depth = robot.getDepth();
         this.height = robot.getHeight();
         this.weight = robot.getWeight();
-        this.createdAt = robot.getCreatedAt();
-        this.lastModifiedAt = robot.getLastModifiedAt();
+        this.createdAt = robot.getCreatedAt().toString();
+        this.lastModifiedAt = robot.getLastModifiedAt().toString();
     }
 }

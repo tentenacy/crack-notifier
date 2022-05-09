@@ -5,6 +5,7 @@ import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -41,7 +42,7 @@ public class CrackQueryRepositoryImpl extends QuerydslRepositorySupport implemen
         JPAQuery<CracksResponse> query = queryFactory.select(Projections.constructor(CracksResponse.class,
                         crack.seq,
                         crack.image,
-                        crack.createdAt,
+                        Expressions.stringTemplate("DATE_FORMAT({0}, '%Y-%m-%d %T')", crack.createdAt),
                         crack.accuracy,
                         crack.address.region3DepthName
                 ))
@@ -64,10 +65,10 @@ public class CrackQueryRepositoryImpl extends QuerydslRepositorySupport implemen
     }
 
     private BooleanExpression dateTimeLoe(LocalDateTime dateTimeLoe) {
-        return dateTimeLoe != null ? crack.createdAt.loe(Timestamp.valueOf(dateTimeLoe)) : null;
+        return dateTimeLoe != null ? crack.createdAt.loe(dateTimeLoe) : null;
     }
 
     private BooleanExpression dateTimeGoe(LocalDateTime dateTimeGoe) {
-        return dateTimeGoe != null ? crack.createdAt.goe(Timestamp.valueOf(dateTimeGoe)) : null;
+        return dateTimeGoe != null ? crack.createdAt.goe(dateTimeGoe) : null;
     }
 }

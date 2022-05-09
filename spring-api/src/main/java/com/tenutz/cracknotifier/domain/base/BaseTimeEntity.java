@@ -16,7 +16,7 @@ import java.util.Date;
 public abstract class BaseTimeEntity extends BaseCreationTimeEntity {
 
     @LastModifiedDate
-    @Column(columnDefinition="datetime(6) default now(6)")
-    private Date lastModifiedAt;
+    @Column(columnDefinition="timestamp(6) default now(6)")
+    private LocalDateTime lastModifiedAt;
 
 }

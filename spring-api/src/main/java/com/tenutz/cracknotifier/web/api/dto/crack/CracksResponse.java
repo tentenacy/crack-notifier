@@ -15,14 +15,14 @@ public class CracksResponse {
 
     private String seq;
     private String imageUrl;
-    private Date createdAt;
+    private String createdAt;
     private float accuracy;
     private String region3DepthName;
 
     public CracksResponse(Crack crack) {
         this.seq = crack.getSeq();
         this.imageUrl = crack.getImage();
-        this.createdAt = crack.getCreatedAt();
+        this.createdAt = crack.getCreatedAt().toString();
         this.accuracy = crack.getAccuracy();
         this.region3DepthName = crack.getAddress().getRegion3DepthName();
     }
