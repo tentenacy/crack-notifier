@@ -14,7 +14,7 @@
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/bottomsheet_filter_cracks.xml" value="0.33" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_container_signup.xml" value="0.22" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_crack.xml" value="0.33" />
-        <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_cracks.xml" value="0.33" />
+        <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_cracks.xml" value="0.22" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_email_login.xml" value="0.25" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_myinfo.xml" value="0.25" />
@@ -27,6 +27,7 @@
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_signup_input_3.xml" value="0.25" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/fragment_works.xml" value="0.36614583333333334" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/item_crack.xml" value="0.33" />
+        <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/layout/item_paging_loading.xml" value="0.5" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/menu/bnv_menu.xml" value="0.36614583333333334" />
         <entry key="..\:/lws_workspace/MyProject/crack-notifier/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.375" />
       </map>

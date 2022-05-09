@@ -29,6 +29,7 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = BottomsheetFilterCracksBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -40,6 +41,34 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
         expandFullHeight()
         observeData()
         setOnClickListeners()
+        setOtherListeners()
+    }
+
+    private fun setOtherListeners() {
+        binding.radiogroupBsfiltercracksDuration.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radiobtn_bsfiltercracks_whole -> {
+                    binding.btnBsfiltercracksStartdate.text = "-"
+                    binding.btnBsfiltercracksEnddate.text = Date().toDateFormat()
+                }
+                R.id.radiobtn_bsfiltercracks_today -> {
+                    binding.btnBsfiltercracksStartdate.text = Date().toDateFormat()
+                    binding.btnBsfiltercracksEnddate.text = Date().toDateFormat()
+                }
+                R.id.radiobtn_bsfiltercracks_week -> {
+                    binding.btnBsfiltercracksStartdate.text = Date().minusDay(7).toDateFormat()
+                    binding.btnBsfiltercracksEnddate.text = Date().toDateFormat()
+                }
+                R.id.radiobtn_bsfiltercracks_month -> {
+                    binding.btnBsfiltercracksStartdate.text = Date().minusMonth(1).toDateFormat()
+                    binding.btnBsfiltercracksEnddate.text = Date().toDateFormat()
+                }
+                R.id.radiobtn_bsfiltercracks_year -> {
+                    binding.btnBsfiltercracksStartdate.text = Date().minusYear(1).toDateFormat()
+                    binding.btnBsfiltercracksEnddate.text = Date().toDateFormat()
+                }
+            }
+        }
     }
 
     private fun setOnClickListeners() {
@@ -61,7 +90,7 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun observeData() {
-        viewModel.termCheckedRadioId.observe(viewLifecycleOwner) {
+        viewModel.durationCheckedRadioId.observe(viewLifecycleOwner) {
             when (it) {
                 R.id.radiobtn_bsfiltercracks_whole -> binding.radiobtnBsfiltercracksWhole.isChecked =
                     true
@@ -73,7 +102,13 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
                     true
                 R.id.radiobtn_bsfiltercracks_year -> binding.radiobtnBsfiltercracksYear.isChecked =
                     true
-                null -> binding.radiogroupBsfiltercracksDuration.clearCheck()
+                else -> binding.radiogroupBsfiltercracksDuration.clearCheck()
+            }
+        }
+        viewModel.sortCheckedRadioId.observe(viewLifecycleOwner) {
+            when(it) {
+                R.id.radiobtn_bsfiltercracks_sort_latest -> binding.radiobtnBsfiltercracksSortLatest.isChecked = true
+                R.id.radiobtn_bsfiltercracks_sort_popularity -> binding.radiobtnBsfiltercracksSortPopularity.isChecked = true
             }
         }
         viewModel.dateFromText.observe(viewLifecycleOwner) {
@@ -98,58 +133,25 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
     private fun resetFilter() {
 
         binding.apply {
-
-            btnBsfiltercracksStartdate.text = Date().start().toDateFormat()
-            btnBsfiltercracksEnddate.text = Date().start().toDateFormat()
-
-            radiogroupBsfiltercracksDuration.clearCheck()
-            radiogroupBsfiltercracksSorting.clearCheck()
-
-            radiobtnBsfiltercracksWhole.isChecked = true
-            radiobtnBsfiltercracksSortLatest.isChecked = true
-
-            viewModel.setTermCheckedRadioId(R.id.radiobtn_bsfiltercracks_whole)
+            binding.radiobtnBsfiltercracksWhole.isChecked = true
+            binding.radiobtnBsfiltercracksSortLatest.isChecked = true
         }
     }
 
     private fun applyFilter() {
 
         binding.apply {
-            when (radiogroupBsfiltercracksDuration.checkedRadioButtonId) {
-                radiobtnBsfiltercracksWhole.id -> {
-                    viewModel.setDateFromText(null)
-                    viewModel.setDateToText(Date().toDateFormat())
-                    viewModel.setTermCheckedRadioId(R.id.radiobtn_bsfiltercracks_whole)
-                }
-
-                radiobtnBsfiltercracksToday.id -> {
-                    viewModel.setDateFromText(Date().toDateFormat())
-                    viewModel.setDateToText(Date().toDateFormat())
-                    viewModel.setTermCheckedRadioId(R.id.radiobtn_bsfiltercracks_today)
-                }
-                radiobtnBsfiltercracksWeek.id -> {
-                    viewModel.setDateFromText(Date().minusDay(7).toDateFormat())
-                    viewModel.setDateToText(Date().toDateFormat())
-                    viewModel.setTermCheckedRadioId(R.id.radiobtn_bsfiltercracks_week)
-                }
-
-                radiobtnBsfiltercracksMonth.id -> {
-                    viewModel.setDateFromText(Date().minusMonth(1).toDateFormat())
-                    viewModel.setDateToText(Date().toDateFormat())
-                    viewModel.setTermCheckedRadioId(R.id.radiobtn_bsfiltercracks_month)
-                }
-
-                radiobtnBsfiltercracksYear.id -> {
-                    viewModel.setDateFromText(Date().minusYear(1).toDateFormat())
-                    viewModel.setDateToText(Date().toDateFormat())
-                    viewModel.setTermCheckedRadioId(R.id.radiobtn_bsfiltercracks_year)
-                }
-                else -> {
-                    viewModel.setDateFromText(if (binding.btnBsfiltercracksStartdate.text.toString() == "-") null else binding.btnBsfiltercracksStartdate.text.toString())
-                    viewModel.setDateToText(binding.btnBsfiltercracksEnddate.text.toString())
-                    viewModel.setTermCheckedRadioId(null)
-                }
-            }
+            viewModel.setDurationCheckedRadioId(radiogroupBsfiltercracksDuration.checkedRadioButtonId)
+            viewModel.setSortCheckedRadioId(radiogroupBsfiltercracksSorting.checkedRadioButtonId)
+            viewModel.setDateFromText(binding.btnBsfiltercracksStartdate.text.toString().takeIf { it != "-" })
+            viewModel.setDateToText(binding.btnBsfiltercracksEnddate.text.toString())
+            viewModel.setSortText(when(binding.radiogroupBsfiltercracksSorting.checkedRadioButtonId) {
+                R.id.radiobtn_bsfiltercracks_sort_latest -> "createdAt,desc"
+                //TODO: 서버에서 좋아요순 구현 후 작업
+                R.id.radiobtn_bsfiltercracks_sort_popularity -> null
+                else -> null
+            })
+            viewModel.cracks()
             dismiss()
         }
     }
@@ -170,7 +172,6 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
                         }-${dayOfMonth.toZeroZeroFormat()}"
 
                         view.text = startDateText
-                        viewModel.setDateFromText(startDateText)
 
                         if (!dateFrom(startDateText).before(dateFrom(binding.btnBsfiltercracksEnddate.text.toString()))) {
                             binding.btnBsfiltercracksEnddate.text = startDateText
@@ -183,7 +184,6 @@ class BottomSheetFilterDialogFragment : BottomSheetDialogFragment() {
                         }-${dayOfMonth.toZeroZeroFormat()}"
 
                         view.text = endDateText
-                        viewModel.setDateToText(endDateText)
 
                         if (binding.btnBsfiltercracksStartdate.text.toString() != "-" && !dateFrom(binding.btnBsfiltercracksStartdate.text.toString()).before(
                                 dateFrom(endDateText)

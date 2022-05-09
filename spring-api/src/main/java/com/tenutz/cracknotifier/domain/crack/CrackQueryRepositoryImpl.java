@@ -48,7 +48,7 @@ public class CrackQueryRepositoryImpl extends QuerydslRepositorySupport implemen
                 ))
                 .from(crack)
                 .join(crack.robot, robot).on(robot.eq(eRobot))
-                .where(dateTimeLoe(cond.getDateTimeFrom()), dateTimeGoe(cond.getDateTimeTo()))
+                .where(dateTimeLoe(cond.getDateTimeTo()), dateTimeGoe(cond.getDateTimeFrom()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize());
 

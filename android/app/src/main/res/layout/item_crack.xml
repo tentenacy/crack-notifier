@@ -5,17 +5,11 @@
 
     <data>
 
-        <variable
-            name="region"
-            type="String" />
+        <import type="com.tenutz.cracknotifier.util.TimeUtilKt" />
 
         <variable
-            name="createdAt"
-            type="String" />
-
-        <variable
-            name="accuracy"
-            type="String" />
+            name="crack"
+            type="com.tenutz.cracknotifier.data.paging.entity.Cracks.Crack" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +36,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:maxLines="1"
-            android:text="@{region}"
+            android:text="@{crack.region3DepthName}"
             app:layout_constraintBottom_toTopOf="@id/text_icrack_at"
             app:layout_constraintEnd_toStartOf="@+id/text_icrack_accuracy"
             app:layout_constraintStart_toEndOf="@id/image_icracks_thumbnail"
@@ -56,7 +50,7 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="14sp"
             android:maxLines="1"
-            android:text="@{createdAt}"
+            android:text="@{TimeUtilKt.toDateTimeFormat(crack.createdAt)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/text_icrack_region"
             app:layout_constraintStart_toStartOf="@+id/text_icrack_region"
@@ -82,7 +76,7 @@
             android:textColor="@color/palette_1"
             android:textSize="40sp"
             android:textStyle="bold"
-            android:text='@{accuracy+"%"}'
+            android:text='@{String.valueOf(Math.round(crack.accuracy))+"%"}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_icrack_label_accuracy"
