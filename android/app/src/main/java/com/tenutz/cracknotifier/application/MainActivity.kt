@@ -16,6 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Token.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyXzAwMDAwMDAwMDEiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjUyMDg5NzYxLCJleHAiOjE2NTIwOTMzNjF9.7umqPoKMPb5PzuCDQUQWXAhjsOm0baJ-V306MMOzQTk"
+        Token.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyXzAwMDAwMDAwMDEiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjUyMDk1NDgwLCJleHAiOjE2NTIwOTkwODB9._3xmi-m7zTectLAHZkNFoQpsq7nAyqbMt-KOJgzE1ts"
     }
 }

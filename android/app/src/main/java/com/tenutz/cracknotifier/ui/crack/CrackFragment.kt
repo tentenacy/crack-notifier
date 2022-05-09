@@ -44,7 +44,7 @@ class CrackFragment: Fragment() {
     }
 
     private fun observeData() {
-        viewModel.tempCrack.observe(viewLifecycleOwner) {
+        viewModel.crackDetails.observe(viewLifecycleOwner) {
             Glide.with(binding.root)
                 .asBitmap()
                 .load(it.imageUrl)
@@ -55,7 +55,7 @@ class CrackFragment: Fragment() {
 
     private fun setOnClickListeners() {
         binding.btnCrackRefresh.setOnClickListener {
-            viewModel.tempCrack(args.crack.id)
+            viewModel.crackDetails(args.crackDetails.seq)
         }
         binding.imageCrackBack.setOnClickListener {
             findNavController().navigateUp()
@@ -64,7 +64,7 @@ class CrackFragment: Fragment() {
 
     private fun initViews() {
         binding.imageCrack.setImageBitmap(args.imageBitmap)
-        binding.crack = args.crack
+        binding.crack = args.crackDetails
     }
 
     override fun onDestroyView() {

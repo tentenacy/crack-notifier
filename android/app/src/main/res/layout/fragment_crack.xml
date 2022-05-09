@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        
+
+        <import type="com.tenutz.cracknotifier.util.TimeUtilKt" />
+
         <variable
             name="crack"
-            type="com.tenutz.cracknotifier.util.dummy.DummyCrackDetail" />
+            type="com.tenutz.cracknotifier.data.api.dto.crack.CrackDetailsResponse" />
     </data>
     
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -205,7 +207,7 @@
                     android:id="@+id/text_crack_at"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{crack.createdAt}"
+                    android:text="@{TimeUtilKt.toDateTimeFormatKr(crack.createdAt)}"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
@@ -242,7 +244,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginHorizontal="16dp"
-                    android:text='@{crack.address+"\n(도로명) "+crack.roadAddress}'
+                    android:text='@{crack.address.addressName+"\n(도로명) "+crack.address.roadAddressName}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text_crack_label_address"

@@ -51,13 +51,11 @@ class NetworkModule {
             .addInterceptor(httpLoggingInterceptor)
             .build()
 
-        val gson = GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
-            .create()
-
         return Retrofit.Builder()
             .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create()))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(client)
     }

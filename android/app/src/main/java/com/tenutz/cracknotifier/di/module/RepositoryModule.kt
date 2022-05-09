@@ -3,6 +3,8 @@ package com.tenutz.cracknotifier.di.module
 import com.tenutz.cracknotifier.data.api.CrackNotifierApi
 import com.tenutz.cracknotifier.data.paging.repository.CrackPagingRepository
 import com.tenutz.cracknotifier.data.paging.repository.CrackPagingRepositoryImpl
+import com.tenutz.cracknotifier.repository.crack.CrackRepository
+import com.tenutz.cracknotifier.repository.crack.CrackRepositoryImpl
 import com.tenutz.cracknotifier.util.mapper.CracksMapper
 import dagger.Binds
 import dagger.Module
@@ -19,12 +21,16 @@ abstract class RepositoryModule {
 
         @Singleton
         @Provides
-        fun provideNoticePagingRepository(
+        fun provideCrackPagingRepository(
             crackNotifierApi: CrackNotifierApi,
             mapper: CracksMapper,
         ): CrackPagingRepository {
             return CrackPagingRepositoryImpl(crackNotifierApi, mapper)
         }
     }
+
+    @Singleton
+    @Binds
+    abstract fun provideCrackRepository(repository: CrackRepositoryImpl): CrackRepository
 
 }

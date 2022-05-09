@@ -52,6 +52,10 @@ fun Date?.toDateTimeFormat(): String {
     return this?.run { SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this) } ?: ""
 }
 
+fun Date?.toDateTimeFormatKr(): String {
+    return this?.run { SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss").format(this) } ?: ""
+}
+
 fun dateFromDateTime(dateText: String): Date {
     return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateText)
 }

@@ -10,6 +10,7 @@ import com.tenutz.cracknotifier.R
 import com.tenutz.cracknotifier.data.api.dto.common.CommonCondition
 import com.tenutz.cracknotifier.data.paging.entity.Cracks
 import com.tenutz.cracknotifier.data.paging.repository.CrackPagingRepository
+import com.tenutz.cracknotifier.repository.crack.CrackRepository
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import com.tenutz.cracknotifier.util.dateFrom
 import com.tenutz.cracknotifier.util.start
@@ -23,6 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CracksViewModel @Inject constructor(
     private val crackPagingRepository: CrackPagingRepository,
+    private val crackRepository: CrackRepository,
 ): BaseViewModel() {
 
     companion object {
@@ -81,6 +83,18 @@ class CracksViewModel @Inject constructor(
                 _cracks.postValue(it)
             }) { t ->
                 Logger.e("${t}")
+            }
+    }
+
+    fun crackDetails(crackId: String) {
+        crackRepository.details(crackId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                viewEvent(Pair(EVENT_NAVIGATE_TO_CRACK, it))
+            }) { t ->
+                Logger.e("${t}")
+
             }
     }
 }

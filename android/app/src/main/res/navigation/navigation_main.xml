@@ -47,8 +47,8 @@
         android:name="com.tenutz.cracknotifier.ui.crack.CrackFragment"
         android:label="CrackFragment" >
         <argument
-            android:name="crack"
-            app:argType="com.tenutz.cracknotifier.util.dummy.DummyCrackDetail" />
+            android:name="crackDetails"
+            app:argType="com.tenutz.cracknotifier.data.api.dto.crack.CrackDetailsResponse" />
         <argument
             android:name="imageBitmap"
             app:argType="android.graphics.Bitmap" />

@@ -24,6 +24,7 @@ class MyActivityViewHolder(private val binding: ItemCrackBinding, private val li
     }
 
     fun bind(crack: Cracks.Crack) {
+        id = crack.seq
         binding.crack = crack
         Glide.with(binding.root)
             .asBitmap()

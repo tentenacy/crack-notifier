@@ -1,6 +1,7 @@
 package com.tenutz.cracknotifier.web.api.dto.robot;
 
 import com.tenutz.cracknotifier.domain.robot.Robot;
+import com.tenutz.cracknotifier.util.TimeUtils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class RobotDetailsResponse {
         this.depth = robot.getDepth();
         this.height = robot.getHeight();
         this.weight = robot.getWeight();
-        this.createdAt = robot.getCreatedAt().toString();
-        this.lastModifiedAt = robot.getLastModifiedAt().toString();
+        this.createdAt = TimeUtils.dateTimeFormatOf(robot.getCreatedAt());
+        this.lastModifiedAt = TimeUtils.dateTimeFormatOf(robot.getLastModifiedAt());
     }
 }

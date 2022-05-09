@@ -14,12 +14,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.tenutz.cracknotifier.data.api.dto.crack.CrackDetailsResponse
 import com.tenutz.cracknotifier.databinding.FragmentCracksBinding
 import com.tenutz.cracknotifier.ui.common.BottomSheetFilterDialogFragment
 import com.tenutz.cracknotifier.ui.common.PageLoadStateAdapter
 import com.tenutz.cracknotifier.ui.root.RootFragment
 import com.tenutz.cracknotifier.ui.root.RootFragmentDirections
-import com.tenutz.cracknotifier.util.dummy.DummyCrackDetail
 import com.tenutz.cracknotifier.util.mainActivity
 import com.tenutz.cracknotifier.util.view.CustomDivider
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +38,7 @@ class CracksFragment : Fragment() {
 
     val adapter: CracksAdapter by lazy {
         CracksAdapter {
-
+            viewModel.crackDetails(it)
         }
     }
 
@@ -85,10 +85,10 @@ class CracksFragment : Fragment() {
             it?.getContentIfNotHandled()?.let {
                 when (it.first) {
                     CracksViewModel.EVENT_NAVIGATE_TO_CRACK -> {
-                        val crack = it.second as DummyCrackDetail
+                        val response = it.second as CrackDetailsResponse
                         Glide.with(binding.root)
                             .asBitmap()
-                            .load(crack.imageUrl)
+                            .load(response.imageUrl)
                             .into(object : CustomTarget<Bitmap>() {
                                 override fun onResourceReady(
                                     resource: Bitmap,
@@ -97,7 +97,7 @@ class CracksFragment : Fragment() {
                                     (parentFragment as RootFragment).findNavController()
                                         .navigate(
                                             RootFragmentDirections.actionRootFragmentToCrackFragment(
-                                                crack,
+                                                response,
                                                 resource
                                             )
                                         )
