@@ -41,7 +41,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/text_crack_ftitle"
+                        android:id="@+id/text_settings_ftitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="환경설정"

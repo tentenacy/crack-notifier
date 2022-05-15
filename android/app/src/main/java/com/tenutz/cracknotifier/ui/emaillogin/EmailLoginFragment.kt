@@ -61,8 +61,8 @@ class EmailLoginFragment: Fragment() {
             }
 
             viewModel.login(LoginRequest(
-                binding.editEmailloginEmail.text.toString(),
-                binding.editEmailloginPwd.text.toString(),
+                binding.editEmailloginEmail.text.toString().trim(),
+                binding.editEmailloginPwd.text.toString().trim(),
             ))
         }
         binding.textEmailloginToSignup.setOnClickListener {
