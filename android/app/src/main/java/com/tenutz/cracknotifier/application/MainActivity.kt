@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 when(it.first) {
                     MainViewModel.EVENT_LOGOUT -> {
                         navigateToLogin()
-                        Toast.makeText(this, "로그인 정보가 유효하지 않아 로그아웃되었습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "성공적으로 로그아웃되었습니다.", Toast.LENGTH_SHORT).show()
                     }
                     MainViewModel.EVENT_LEAVE -> {
                         navGraph.startDestination = R.id.rootFragment

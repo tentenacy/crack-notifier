@@ -37,6 +37,9 @@ class SettingsFragment: Fragment() {
         binding.imageSettingsBack.setOnClickListener {
             findNavController().navigateUp()
         }
+        binding.linearSettingsContainerAccount.setOnClickListener {
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToSettingsAccountFragment())
+        }
     }
 
     override fun onDestroyView() {

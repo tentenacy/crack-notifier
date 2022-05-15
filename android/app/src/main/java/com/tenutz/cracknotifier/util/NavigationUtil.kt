@@ -12,9 +12,9 @@ fun MainActivity.currentDestinationId(): Int? = currentFragment()?.let { NavHost
 
 fun MainActivity.navigateToLogin() {
     if (currentDestinationId() != R.id.loginFragment) {
-        val navController = findNavController(R.id.container)
+        val navController = findNavController(R.id.container_main)
         val navHostFragment: NavHostFragment =
-            supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.container_main) as NavHostFragment
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.navigation_main)
         graph.startDestination = R.id.loginFragment

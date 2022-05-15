@@ -65,7 +65,7 @@ class MainViewModel @Inject constructor(
         tokenExpirationObservable.unregisterObserver(this)
     }
 
-    private fun logout() {
+    fun logout() {
 
         Token.clear()
 

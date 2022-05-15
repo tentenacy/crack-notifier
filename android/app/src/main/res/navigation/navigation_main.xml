@@ -31,7 +31,11 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.tenutz.cracknotifier.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsAccountFragment"
+            app:destination="@id/settingsAccountFragment" />
+    </fragment>
     <fragment
         android:id="@+id/containerSignupFragment"
         android:name="com.tenutz.cracknotifier.ui.signup.ContainerSignupFragment"
@@ -71,4 +75,8 @@
         app:destination="@id/loginFragment"
         app:popUpTo="@id/rootFragment"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/settingsAccountFragment"
+        android:name="com.tenutz.cracknotifier.ui.settings.SettingsAccountFragment"
+        android:label="SettingsAccountFragment" />
 </navigation>
