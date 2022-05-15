@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.tenutz.cracknotifier.data.api.dto.user.SignupRequest
 import com.tenutz.cracknotifier.databinding.FragmentSignupInput1Binding
 import com.tenutz.cracknotifier.databinding.FragmentSignupInput3Binding
 import com.tenutz.cracknotifier.ui.signup.ContainerSignupFragment
@@ -68,8 +69,7 @@ class SignupInput3Fragment: Fragment() {
 
     private fun setOnClickListeners() {
         signupFragment().binding.btnContainersignupNext.setOnClickListener {
-            signupFragment().findNavController()
-                .navigate(ContainerSignupFragmentDirections.actionSignupFragmentToRootFragment())
+            signupFragment().viewModel.signup()
         }
     }
 

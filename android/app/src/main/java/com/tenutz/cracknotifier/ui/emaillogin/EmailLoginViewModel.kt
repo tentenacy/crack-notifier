@@ -23,6 +23,7 @@ class EmailLoginViewModel @Inject constructor(
     }
 
     fun login(request: LoginRequest) {
+
         userRepository.login(request)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

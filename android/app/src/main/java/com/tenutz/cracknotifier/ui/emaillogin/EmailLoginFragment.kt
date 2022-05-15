@@ -43,9 +43,19 @@ class EmailLoginFragment: Fragment() {
             mainActivity().onBackPressed()
         }
         binding.btnEmaillogin.setOnClickListener {
-            if(binding.editEmailloginEmail.text.toString().trim().isBlank() ||
-                binding.editEmailloginPwd.text.toString().trim().isBlank()) {
+            if(binding.editEmailloginEmail.text.toString().trim().isBlank()) {
+                Toast.makeText(mainActivity(), "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
+            if(!"""[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]""".toRegex()
+                    .matches(binding.editEmailloginEmail.text.toString().trim())) {
+                Toast.makeText(mainActivity(), "잘못된 형식의 이메일입니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(binding.editEmailloginPwd.text.toString().trim().isBlank()) {
+                Toast.makeText(mainActivity(), "비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -64,7 +74,7 @@ class EmailLoginFragment: Fragment() {
                         findNavController().navigate(EmailLoginFragmentDirections.actionEmailLoginFragmentToRootFragment())
                     }
                     EmailLoginViewModel.EVENT_TOAST_LOGIN_FAILED -> {
-                        Toast.makeText(mainActivity(), "아이디 혹은 비밀번호가 잘못되었습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mainActivity(), "존재하지 않는 계정이거나, 잘못된 비밀번호입니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

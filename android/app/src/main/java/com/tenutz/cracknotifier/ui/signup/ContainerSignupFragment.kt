@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.R
 import com.tenutz.cracknotifier.databinding.FragmentContainerSignupBinding
 import com.tenutz.cracknotifier.util.mainActivity
@@ -38,6 +39,16 @@ class ContainerSignupFragment: Fragment() {
 
         binding.imageContainersignupBack.setOnClickListener {
             mainActivity().onBackPressed()
+        }
+        viewModel.viewEvent.observe(viewLifecycleOwner) {
+            it?.getContentIfNotHandled()?.let {
+                when (it.first) {
+                    ContainerSignupViewModel.EVENT_NAVIGATE_TO_ROOT -> {
+                        findNavController()
+                            .navigate(ContainerSignupFragmentDirections.actionSignupFragmentToRootFragment())
+                    }
+                }
+            }
         }
     }
 
