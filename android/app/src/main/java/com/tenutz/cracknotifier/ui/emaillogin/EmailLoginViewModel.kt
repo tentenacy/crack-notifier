@@ -5,6 +5,7 @@ import com.tenutz.cracknotifier.data.api.dto.common.ErrorCode
 import com.tenutz.cracknotifier.data.api.dto.user.LoginRequest
 import com.tenutz.cracknotifier.data.repository.UserRepository
 import com.tenutz.cracknotifier.data.sharedpref.Token
+import com.tenutz.cracknotifier.data.sharedpref.User
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import com.tenutz.cracknotifier.util.toErrorResponseOrNull
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,10 +26,14 @@ class EmailLoginViewModel @Inject constructor(
     fun login(request: LoginRequest) {
 
         userRepository.login(request)
+            .flatMap {
+                Token.save(it)
+                userRepository.details()
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Token.save(it)
+                User.save(it)
                 viewEvent(Pair(EVENT_NAVIGATE_TO_ROOT, Unit))
             }) { t ->
                 Logger.e("${t}")

@@ -7,6 +7,7 @@ import com.tenutz.cracknotifier.data.sharedpref.OAuthToken
 import com.tenutz.cracknotifier.network.interceptor.TokenInterceptor
 import com.tenutz.cracknotifier.network.observer.TokenExpirationObserver
 import com.tenutz.cracknotifier.data.sharedpref.Token
+import com.tenutz.cracknotifier.data.sharedpref.User
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -34,7 +35,17 @@ class MainViewModel @Inject constructor(
         OAuthToken.clear()
         OAuthToken.whenHasOAuthTokenOrNot({}) {
             Token.whenHasOAuthTokenOrNot({
-                viewEvent(Pair(EVENT_LEAVE, Unit))
+                userRepository.details()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ response ->
+                        User.save(response)
+                        viewEvent(Pair(EVENT_LEAVE, Unit))
+                    }) { t ->
+                        Logger.e("${t}")
+                        logout()
+                        viewEvent(Pair(EVENT_REMAIN, Unit))
+                    }
             }) {
                 viewEvent(Pair(EVENT_REMAIN, Unit))
             }

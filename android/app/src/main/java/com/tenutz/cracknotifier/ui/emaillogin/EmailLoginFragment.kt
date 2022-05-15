@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.data.api.dto.user.LoginRequest
+import com.tenutz.cracknotifier.data.sharedpref.User
 import com.tenutz.cracknotifier.databinding.FragmentEmailLoginBinding
 import com.tenutz.cracknotifier.util.mainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,6 +72,7 @@ class EmailLoginFragment: Fragment() {
             it?.getContentIfNotHandled()?.let {
                 when(it.first) {
                     EmailLoginViewModel.EVENT_NAVIGATE_TO_ROOT -> {
+                        Toast.makeText(mainActivity(), "${User.username}님이 로그인하셨습니다.", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(EmailLoginFragmentDirections.actionEmailLoginFragmentToRootFragment())
                     }
                     EmailLoginViewModel.EVENT_TOAST_LOGIN_FAILED -> {

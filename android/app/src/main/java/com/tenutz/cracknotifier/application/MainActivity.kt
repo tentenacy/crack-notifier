@@ -8,7 +8,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import com.tenutz.cracknotifier.R
+import com.tenutz.cracknotifier.data.sharedpref.User
 import com.tenutz.cracknotifier.databinding.ActivityMainBinding
+import com.tenutz.cracknotifier.util.mainActivity
 import com.tenutz.cracknotifier.util.navigateToLogin
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,6 +51,8 @@ class MainActivity : AppCompatActivity() {
                         navController.graph = navGraph
 
                         setContentView(binding.root)
+
+                        Toast.makeText(this, "${User.username}님이 로그인하셨습니다.", Toast.LENGTH_SHORT).show()
                     }
                     MainViewModel.EVENT_REMAIN -> {
                         navGraph.startDestination = R.id.loginFragment
