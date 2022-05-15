@@ -10,7 +10,7 @@ import com.tenutz.cracknotifier.R
 import com.tenutz.cracknotifier.data.api.dto.common.CommonCondition
 import com.tenutz.cracknotifier.data.paging.entity.Cracks
 import com.tenutz.cracknotifier.data.paging.repository.CrackPagingRepository
-import com.tenutz.cracknotifier.repository.crack.CrackRepository
+import com.tenutz.cracknotifier.data.repository.crack.CrackRepository
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import com.tenutz.cracknotifier.util.dateFrom
 import com.tenutz.cracknotifier.util.start

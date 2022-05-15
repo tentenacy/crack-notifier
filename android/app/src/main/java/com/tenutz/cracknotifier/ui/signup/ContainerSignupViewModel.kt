@@ -5,7 +5,7 @@ import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.data.api.dto.user.LoginRequest
 import com.tenutz.cracknotifier.data.api.dto.user.SignupRequest
 import com.tenutz.cracknotifier.data.repository.UserRepository
-import com.tenutz.cracknotifier.sharedpref.Token
+import com.tenutz.cracknotifier.data.sharedpref.Token
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

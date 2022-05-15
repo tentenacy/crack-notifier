@@ -1,4 +1,4 @@
-package com.tenutz.cracknotifier.repository.crack
+package com.tenutz.cracknotifier.data.repository.crack
 
 import com.tenutz.cracknotifier.data.api.CrackNotifierApi
 import com.tenutz.cracknotifier.data.api.dto.crack.CrackDetailsResponse

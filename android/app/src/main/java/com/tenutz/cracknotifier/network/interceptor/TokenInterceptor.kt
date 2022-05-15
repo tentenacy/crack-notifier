@@ -4,7 +4,7 @@ import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.data.api.dto.common.ErrorCode
 import com.tenutz.cracknotifier.network.observer.TokenExpirationObserver
 import com.tenutz.cracknotifier.network.subject.Subject
-import com.tenutz.cracknotifier.sharedpref.Token
+import com.tenutz.cracknotifier.data.sharedpref.Token
 import com.tenutz.cracknotifier.util.toErrorResponseOrNull
 import com.tenutz.cracknotifier.util.toTokenResponseOrNull
 import okhttp3.Interceptor

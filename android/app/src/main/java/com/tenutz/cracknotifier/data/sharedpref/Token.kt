@@ -1,4 +1,4 @@
-package com.tenutz.cracknotifier.sharedpref
+package com.tenutz.cracknotifier.data.sharedpref
 
 import com.chibatching.kotpref.KotprefModel
 import com.tenutz.cracknotifier.data.api.dto.common.TokenResponse

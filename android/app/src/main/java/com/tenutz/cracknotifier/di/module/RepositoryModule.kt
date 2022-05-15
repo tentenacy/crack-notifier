@@ -5,8 +5,8 @@ import com.tenutz.cracknotifier.data.paging.repository.CrackPagingRepository
 import com.tenutz.cracknotifier.data.paging.repository.CrackPagingRepositoryImpl
 import com.tenutz.cracknotifier.data.repository.UserRepository
 import com.tenutz.cracknotifier.data.repository.UserRepositoryImpl
-import com.tenutz.cracknotifier.repository.crack.CrackRepository
-import com.tenutz.cracknotifier.repository.crack.CrackRepositoryImpl
+import com.tenutz.cracknotifier.data.repository.crack.CrackRepository
+import com.tenutz.cracknotifier.data.repository.crack.CrackRepositoryImpl
 import com.tenutz.cracknotifier.util.mapper.CracksMapper
 import dagger.Binds
 import dagger.Module
