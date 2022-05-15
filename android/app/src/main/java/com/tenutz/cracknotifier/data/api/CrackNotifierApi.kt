@@ -4,7 +4,7 @@ import com.tenutz.cracknotifier.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.create
 
-interface CrackNotifierApi: CrackApi {
+interface CrackNotifierApi: CrackApi, UserApi {
     companion object {
         fun create(retrofitBuilder: Retrofit.Builder): CrackNotifierApi {
             return retrofitBuilder

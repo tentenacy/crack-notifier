@@ -48,7 +48,7 @@ enum class ErrorCode(
      */
     SOCIAL_COMMUNICATION_ERROR(
         HttpsURLConnection.HTTP_INTERNAL_ERROR,
-        "CNF-2000",
+        "CRN-2000",
         "소셜 인증 과정 중 오류가 발생했습니다."
     ),
 
@@ -57,19 +57,20 @@ enum class ErrorCode(
      */
     ACCESS_TOKEN_ERROR(
         HttpsURLConnection.HTTP_UNAUTHORIZED,
-        "CNF-3000",
+        "CRN-3000",
         "액세스 토큰이 만료되거나 잘못된 값입니다."
     ),
     REFRESH_TOKEN_ERROR(
         HttpsURLConnection.HTTP_UNAUTHORIZED,
-        "CNF-3001",
+        "CRN-3001",
         "리프레시 토큰이 만료되거나 잘못된 값입니다."
     ),
-    TOKEN_PARSE_ERROR(HttpsURLConnection.HTTP_UNAUTHORIZED, "CNF-3002", "해석할 수 없는 토큰입니다."),
-    SIGNATURE_ERROR(HttpsURLConnection.HTTP_UNAUTHORIZED, "CNF-3003", "JWT의 생성과 복호화할 때의 비밀키가 서로 다릅니다."),
+    TOKEN_PARSE_ERROR(HttpsURLConnection.HTTP_UNAUTHORIZED, "CRN-3002", "해석할 수 없는 토큰입니다."),
+    SIGNATURE_ERROR(HttpsURLConnection.HTTP_UNAUTHORIZED, "CRN-3003", "JWT의 생성과 복호화할 때의 비밀키가 서로 다릅니다."),
 
     /**
      * BUSINESS
      */
-//    MEMBERINFO_NOT_FOUND(HttpsURLConnection.HTTP_BAD_REQUEST, "CNF-1018", "사용자 정보가 존재하지 않습니다."),
+    LOGIN_FAIL(HttpsURLConnection.HTTP_BAD_REQUEST, "CRN-1000", "존재하지 않는 계정이거나, 잘못된 비밀번호입니다."),
+    USER_NOT_FOUND(HttpsURLConnection.HTTP_BAD_REQUEST, "CRN-1003", "사용자가 존재하지 않습니다."),
 }

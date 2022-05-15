@@ -41,11 +41,8 @@ class TokenInterceptor: Interceptor, Subject<TokenExpirationObserver>() {
                 }
             }
         } else {
-            response.peekBody(2048).toTokenResponseOrNull()?.apply {
-                Token.grantType = grantType
-                Token.accessToken = accessToken
-                Token.refreshToken = refreshToken
-                Token.accessTokenExpireIn = accessTokenExpiresIn
+            response.peekBody(2048).toTokenResponseOrNull()?.let {
+                Token.save(it)
 
                 accessTokenErrorOccurred = false
                 refreshTokenErrorOccurred = false

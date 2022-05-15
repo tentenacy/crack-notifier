@@ -15,7 +15,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        Token.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyXzAwMDAwMDAwMDEiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjUyMDk1NDgwLCJleHAiOjE2NTIwOTkwODB9._3xmi-m7zTectLAHZkNFoQpsq7nAyqbMt-KOJgzE1ts"
     }
 }
