@@ -10,6 +10,7 @@ import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import com.tenutz.cracknotifier.util.toErrorResponseOrNull
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -44,6 +45,6 @@ class EmailLoginViewModel @Inject constructor(
                         }
                     }
                 }
-            }
+            }.addTo(compositeDisposable)
     }
 }

@@ -18,6 +18,7 @@ import com.tenutz.cracknotifier.util.toDateTimeFormat
 import com.tenutz.cracknotifier.util.tomorrow
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -83,7 +84,7 @@ class CracksViewModel @Inject constructor(
                 _cracks.postValue(it)
             }) { t ->
                 Logger.e("${t}")
-            }
+            }.addTo(compositeDisposable)
     }
 
     fun crackDetails(crackId: String) {
@@ -95,6 +96,6 @@ class CracksViewModel @Inject constructor(
             }) { t ->
                 Logger.e("${t}")
 
-            }
+            }.addTo(compositeDisposable)
     }
 }

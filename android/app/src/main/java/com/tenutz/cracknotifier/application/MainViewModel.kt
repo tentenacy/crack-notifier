@@ -45,7 +45,7 @@ class MainViewModel @Inject constructor(
                         Logger.e("${t}")
                         logout()
                         viewEvent(Pair(EVENT_REMAIN, Unit))
-                    }
+                    }.addTo(compositeDisposable)
             }) {
                 viewEvent(Pair(EVENT_REMAIN, Unit))
             }

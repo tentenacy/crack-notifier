@@ -8,6 +8,7 @@ import com.tenutz.cracknotifier.data.repository.crack.CrackRepository
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -27,6 +28,6 @@ class CrackViewModel @Inject constructor(
                 _crackDetails.postValue(it)
             }) { t ->
                 Logger.e("${t}")
-            }
+            }.addTo(compositeDisposable)
     }
 }

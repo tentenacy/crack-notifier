@@ -9,6 +9,7 @@ import com.tenutz.cracknotifier.data.sharedpref.Token
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
@@ -43,6 +44,6 @@ class ContainerSignupViewModel @Inject constructor(
                 viewEvent(Pair(EVENT_NAVIGATE_TO_ROOT, Unit))
             }) { t ->
                 Logger.e("${t}")
-            }
+            }.addTo(compositeDisposable)
     }
 }
