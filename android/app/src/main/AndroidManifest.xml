@@ -13,6 +13,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".application.MainActivity"
+            android:theme="@style/Theme.CrackNotifier.Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

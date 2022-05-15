@@ -2,6 +2,7 @@ package com.tenutz.cracknotifier.data.sharedpref
 
 import com.chibatching.kotpref.KotprefModel
 import com.tenutz.cracknotifier.data.api.dto.common.TokenResponse
+import com.tenutz.cracknotifier.util.types.SocialType
 
 object Token: KotprefModel() {
     var grantType by stringPref()
@@ -14,5 +15,22 @@ object Token: KotprefModel() {
         accessToken = response.accessToken
         refreshToken = response.refreshToken
         accessTokenExpireIn = response.accessTokenExpiresIn
+    }
+
+    fun whenHasAccessToken(callback: () -> Unit): Boolean =
+        if(accessToken.isNotBlank()) {
+            callback()
+            true
+        } else {
+            false
+        }
+
+    fun whenHasOAuthTokenOrNot(
+        hasAccessTokenCallback: () -> Unit,
+        hasNotAccessTokenCallback: () -> Unit
+    ) {
+        if (!whenHasAccessToken(hasAccessTokenCallback)) {
+            hasNotAccessTokenCallback()
+        }
     }
 }

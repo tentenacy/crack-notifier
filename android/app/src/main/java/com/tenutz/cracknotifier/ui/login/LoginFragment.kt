@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.databinding.FragmentLoginBinding
+import com.tenutz.cracknotifier.util.mainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,6 +16,8 @@ class LoginFragment: Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     val binding: FragmentLoginBinding get() = _binding!!
+
+    val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

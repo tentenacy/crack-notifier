@@ -10,6 +10,7 @@ import com.tenutz.cracknotifier.databinding.FragmentRootBinding
 import com.tenutz.cracknotifier.ui.root.cracks.CracksFragment
 import com.tenutz.cracknotifier.ui.root.robotcurrentsituation.RobotCurrentSituationFragment
 import com.tenutz.cracknotifier.ui.root.works.WorksFragment
+import com.tenutz.cracknotifier.util.mainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

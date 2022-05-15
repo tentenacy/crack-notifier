@@ -3,6 +3,7 @@ package com.tenutz.cracknotifier.application
 import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.data.api.dto.user.ReissueRequest
 import com.tenutz.cracknotifier.data.repository.UserRepository
+import com.tenutz.cracknotifier.data.sharedpref.OAuthToken
 import com.tenutz.cracknotifier.network.interceptor.TokenInterceptor
 import com.tenutz.cracknotifier.network.observer.TokenExpirationObserver
 import com.tenutz.cracknotifier.data.sharedpref.Token
@@ -21,10 +22,23 @@ class MainViewModel @Inject constructor(
 
     companion object {
         const val EVENT_LOGOUT = 1000
+        const val EVENT_LEAVE = 1001
+        const val EVENT_REMAIN = 1002
     }
 
     init {
         tokenExpirationObservable.registerObserver(this)
+    }
+
+    fun autoLogin() {
+        OAuthToken.clear()
+        OAuthToken.whenHasOAuthTokenOrNot({}) {
+            Token.whenHasOAuthTokenOrNot({
+                viewEvent(Pair(EVENT_LEAVE, Unit))
+            }) {
+                viewEvent(Pair(EVENT_REMAIN, Unit))
+            }
+        }
     }
 
     override fun onTokenExpired() {
