@@ -40,13 +40,6 @@ class TokenInterceptor: Interceptor, Subject<TokenExpirationObserver>() {
                     }
                 }
             }
-        } else {
-            response.peekBody(2048).toTokenResponseOrNull()?.let {
-                Token.save(it)
-
-                accessTokenErrorOccurred = false
-                refreshTokenErrorOccurred = false
-            }
         }
 
         return response
@@ -58,5 +51,10 @@ class TokenInterceptor: Interceptor, Subject<TokenExpirationObserver>() {
 
     private fun notifyRefreshTokenExpired() {
         observers.forEach(TokenExpirationObserver::onRefreshTokenExpired)
+    }
+
+    fun resetTokenErrorOccurred() {
+        accessTokenErrorOccurred = false
+        refreshTokenErrorOccurred = false
     }
 }

@@ -58,6 +58,7 @@ class MainViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Token.save(it)
+                tokenExpirationObservable.resetTokenErrorOccurred()
             }) { t ->
                 Logger.e("${t}")
             }.addTo(compositeDisposable)
