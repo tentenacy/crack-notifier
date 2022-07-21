@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.tenutz.cracknotifier.databinding.FragmentRootBinding
+import com.tenutz.cracknotifier.data.sharedpref.Settings
 import com.tenutz.cracknotifier.databinding.FragmentSettingsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +30,22 @@ class SettingsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.settings = Settings
+
         setOnClickListeners()
+        setOtherListeners()
+    }
+
+    private fun setOtherListeners() {
+        binding.switchSettingsPush.setOnCheckedChangeListener { buttonView, isChecked ->
+            Settings.pushNotification = isChecked
+        }
+        binding.switchSettingsPushCracks.setOnCheckedChangeListener { buttonView, isChecked ->
+            Settings.pushNotificationCrackRegistration = isChecked
+        }
+        binding.switchSettingsPushBattery.setOnCheckedChangeListener { buttonView, isChecked ->
+            Settings.pushNotificationBattery = isChecked
+        }
     }
 
     private fun setOnClickListeners() {

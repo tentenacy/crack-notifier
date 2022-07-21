@@ -23,4 +23,9 @@ public class CEntityNotFoundException extends CBusinessException {
             super(ErrorCode.CRACK_NOT_FOUND);
         }
     }
+    public static class CRobotDrivingInformationNotFoundException extends CEntityNotFoundException {
+        public CRobotDrivingInformationNotFoundException() {
+            super(ErrorCode.ROBOT_DRIVING_INFORMATION_NOT_FOUND);
+        }
+    }
 }

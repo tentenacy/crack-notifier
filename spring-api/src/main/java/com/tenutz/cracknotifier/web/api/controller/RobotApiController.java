@@ -3,9 +3,7 @@ package com.tenutz.cracknotifier.web.api.controller;
 import com.tenutz.cracknotifier.web.api.dto.crack.CrackCreateRequest;
 import com.tenutz.cracknotifier.web.api.dto.crack.CrackDetectRequest;
 import com.tenutz.cracknotifier.web.api.dto.fcm.FcmRequest;
-import com.tenutz.cracknotifier.web.api.dto.robot.RobotCreateRequest;
-import com.tenutz.cracknotifier.web.api.dto.robot.RobotCreateResponse;
-import com.tenutz.cracknotifier.web.api.dto.robot.RobotDetailsResponse;
+import com.tenutz.cracknotifier.web.api.dto.robot.*;
 import com.tenutz.cracknotifier.web.api.exception.business.CEntityNotFoundException;
 import com.tenutz.cracknotifier.web.api.exception.io.CIOException.CMLCommunicationException;
 import com.tenutz.cracknotifier.web.api.exception.social.CSocialException;
@@ -27,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collections;
@@ -106,5 +105,15 @@ public class RobotApiController {
     @GetMapping("/details")
     public RobotDetailsResponse robotDetails() {
         return robotService.details();
+    }
+
+    @PutMapping("/driving-information")
+    public void updateDrivingInformation(@Valid @RequestBody DrivingInformationUpdateRequest request) {
+        robotService.updateDrivingInformation(request);
+    }
+
+    @GetMapping("/driving-information")
+    public RobotDrivingInformationResponse drivingInformation() {
+        return robotService.drivingInformation();
     }
 }

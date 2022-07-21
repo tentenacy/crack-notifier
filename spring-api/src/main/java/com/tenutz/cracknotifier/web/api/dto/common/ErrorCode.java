@@ -26,6 +26,7 @@ public enum ErrorCode {
     USER_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1003", "사용자가 존재하지 않습니다."),
     ROBOT_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1004", "로봇이 존재하지 않습니다."),
     CRACK_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1005", "균열이 존재하지 않습니다."),
+    ROBOT_DRIVING_INFORMATION_NOT_FOUND(HttpStatus.BAD_REQUEST.value(), "CRN-1006", "로봇 주행 정보가 존재하지 않습니다."),
 
     /**
      * SOCIAL
