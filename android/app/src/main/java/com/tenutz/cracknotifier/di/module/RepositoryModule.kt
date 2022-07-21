@@ -7,6 +7,8 @@ import com.tenutz.cracknotifier.data.repository.UserRepository
 import com.tenutz.cracknotifier.data.repository.UserRepositoryImpl
 import com.tenutz.cracknotifier.data.repository.crack.CrackRepository
 import com.tenutz.cracknotifier.data.repository.crack.CrackRepositoryImpl
+import com.tenutz.cracknotifier.data.repository.robot.RobotRepository
+import com.tenutz.cracknotifier.data.repository.robot.RobotRepositoryImpl
 import com.tenutz.cracknotifier.util.mapper.CracksMapper
 import dagger.Binds
 import dagger.Module
@@ -39,4 +41,7 @@ abstract class RepositoryModule {
     @Binds
     abstract fun provideUserRepository(repository: UserRepositoryImpl): UserRepository
 
+    @Singleton
+    @Binds
+    abstract fun provideRobotRepository(repository: RobotRepositoryImpl): RobotRepository
 }

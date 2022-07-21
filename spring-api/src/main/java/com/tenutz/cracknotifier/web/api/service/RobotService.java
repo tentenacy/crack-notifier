@@ -67,9 +67,8 @@ public class RobotService {
     }
 
     @Transactional
-    public void updateDrivingInformation(DrivingInformationUpdateRequest request) {
-        User foundUser = SecurityUtils.userThrowable(userRepository);
-        Robot foundRobot = Optional.ofNullable(foundUser.getRobot()).orElseThrow(CRobotNotFoundException::new);
+    public void updateDrivingInformation(String robotSeq, DrivingInformationUpdateRequest request) {
+        Robot foundRobot = SecurityUtils.robotThrowable(robotRepository, robotSeq);
         RobotDrivingInformation robotDrivingInformation = robotDrivingInformationRepository.findByRobot(foundRobot).orElseGet(() -> robotDrivingInformationRepository.save(RobotDrivingInformation.create(foundRobot)));
         robotDrivingInformation.update(
                 request.getLatitude(),
@@ -96,5 +95,22 @@ public class RobotService {
         Robot foundRobot = Optional.ofNullable(foundUser.getRobot()).orElseThrow(CRobotNotFoundException::new);
         RobotDrivingInformation foundRobotDrivingInformation = robotDrivingInformationRepository.findByRobot(foundRobot).orElseThrow(CEntityNotFoundException.CRobotDrivingInformationNotFoundException::new);
         return RobotDrivingInformationResponse.of(foundRobotDrivingInformation);
+    }
+
+    public boolean batteryNotified(String robotSeq) {
+        Robot foundRobot = SecurityUtils.robotThrowable(robotRepository, robotSeq);
+        return foundRobot.isBatteryNotified();
+    }
+
+    @Transactional
+    public void notifyBattery(String robotSeq) {
+        Robot foundRobot = SecurityUtils.robotThrowable(robotRepository, robotSeq);
+        foundRobot.notifyBattery();
+    }
+
+    @Transactional
+    public void resetBatteryNotification(String robotSeq) {
+        Robot foundRobot = SecurityUtils.robotThrowable(robotRepository, robotSeq);
+        foundRobot.resetBatteryNotification();
     }
 }

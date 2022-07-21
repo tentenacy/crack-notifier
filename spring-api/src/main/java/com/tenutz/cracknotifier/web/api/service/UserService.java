@@ -37,4 +37,9 @@ public class UserService {
         User foundUser = userRepository.findByRobot(foundRobot).orElseThrow(CEntityNotFoundException.CUserNotFoundException::new);
         return foundUser.getFcmToken();
     }
+
+    public String fcmToken() {
+        User foundUser = SecurityUtils.userThrowable(userRepository);
+        return foundUser.getFcmToken();
+    }
 }

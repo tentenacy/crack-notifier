@@ -55,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/users/social/naver/**",
                         "/users/social/facebook/**"
                 ).permitAll()
+                .antMatchers(HttpMethod.PUT, "/robots/{robotId}/driving-information").permitAll()
                 .antMatchers(HttpMethod.GET, "/oauth/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/exception/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/exception/**").permitAll()

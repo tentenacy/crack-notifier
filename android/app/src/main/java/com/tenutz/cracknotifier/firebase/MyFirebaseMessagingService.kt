@@ -50,6 +50,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         if(!Settings.pushNotification) return
 
         //수신한 메시지를 처리
+        val messageTopic: String = remoteMessage.data["topic"].toString()
+
+        if(when(messageTopic) {
+            "crack_registration" -> !Settings.pushNotificationCrackRegistration
+            "battery" -> !Settings.pushNotificationBattery
+            else -> true
+        }) return
+
         val messageBody: String = remoteMessage.data["body"].toString()
         val messageTitle: String = remoteMessage.data["title"].toString()
         val intent = Intent(this, MainActivity::class.java)

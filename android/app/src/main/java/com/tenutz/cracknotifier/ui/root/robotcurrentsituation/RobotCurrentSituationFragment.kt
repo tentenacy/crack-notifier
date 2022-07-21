@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.tenutz.cracknotifier.databinding.FragmentRobotcsBinding
 import com.tenutz.cracknotifier.ui.root.RootFragment
@@ -16,6 +17,15 @@ class RobotCurrentSituationFragment: Fragment() {
 
     private var _binding: FragmentRobotcsBinding? = null
     val binding: FragmentRobotcsBinding get() = _binding!!
+
+    private val viewModel: RobotCurrentSituationViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.robotDetails()
+        viewModel.robotDrivingInformation()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +42,16 @@ class RobotCurrentSituationFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setOnClickListeners()
+        binding.swipeRobotcsContainer.setOnRefreshListener {
+            viewModel.robotDetails()
+        }
+        viewModel.robotDrivingInformation.observe(viewLifecycleOwner) {
+            binding.drivingInformation = it
+        }
+        viewModel.robotDetails.observe(viewLifecycleOwner) {
+            binding.details = it
+            binding.swipeRobotcsContainer.isRefreshing = false
+        }
     }
 
     private fun setOnClickListeners() {

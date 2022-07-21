@@ -21,6 +21,7 @@ public class FcmRequest {
     @AllArgsConstructor
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Data {
+        private String topic;
         private String title;
         private String body;
     }
