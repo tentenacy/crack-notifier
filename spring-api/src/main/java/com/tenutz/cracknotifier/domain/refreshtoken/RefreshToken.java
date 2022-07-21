@@ -27,11 +27,11 @@ public class RefreshToken extends BaseTimeEntity {
     @Column(name = "token_key", nullable = false, updatable = false)
     private String key;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private String token;
 
     public void update(String token) {
-        this.token = token;
+        setToken(token);
     }
 
     public static RefreshToken create(String key, String token) {

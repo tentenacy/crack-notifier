@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main.xml"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.tenutz.cracknotifier.ui.login.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_rootFragment"
             app:destination="@id/rootFragment"
@@ -20,7 +22,8 @@
     <fragment
         android:id="@+id/rootFragment"
         android:name="com.tenutz.cracknotifier.ui.root.RootFragment"
-        android:label="RootFragment" >
+        android:label="RootFragment"
+        tools:layout="@layout/fragment_root">
         <action
             android:id="@+id/action_rootFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -31,7 +34,8 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.tenutz.cracknotifier.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_settingsAccountFragment"
             app:destination="@id/settingsAccountFragment" />
@@ -39,7 +43,8 @@
     <fragment
         android:id="@+id/containerSignupFragment"
         android:name="com.tenutz.cracknotifier.ui.signup.ContainerSignupFragment"
-        android:label="ContainerSignupFragment" >
+        android:label="ContainerSignupFragment"
+        tools:layout="@layout/fragment_container_signup">
         <action
             android:id="@+id/action_signupFragment_to_rootFragment"
             app:destination="@id/rootFragment"
@@ -49,7 +54,8 @@
     <fragment
         android:id="@+id/crackFragment"
         android:name="com.tenutz.cracknotifier.ui.crack.CrackFragment"
-        android:label="CrackFragment" >
+        android:label="CrackFragment"
+        tools:layout="@layout/fragment_crack">
         <argument
             android:name="crackDetails"
             app:argType="com.tenutz.cracknotifier.data.api.dto.crack.CrackDetailsResponse" />
@@ -60,7 +66,8 @@
     <fragment
         android:id="@+id/emailLoginFragment"
         android:name="com.tenutz.cracknotifier.ui.emaillogin.EmailLoginFragment"
-        android:label="EmailLoginFragment" >
+        android:label="EmailLoginFragment"
+        tools:layout="@layout/fragment_email_login">
         <action
             android:id="@+id/action_emailLoginFragment_to_rootFragment"
             app:destination="@id/rootFragment"
@@ -78,5 +85,6 @@
     <fragment
         android:id="@+id/settingsAccountFragment"
         android:name="com.tenutz.cracknotifier.ui.settings.SettingsAccountFragment"
-        android:label="SettingsAccountFragment" />
+        android:label="SettingsAccountFragment"
+        tools:layout="@layout/fragment_settings_account"/>
 </navigation>

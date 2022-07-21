@@ -8,7 +8,7 @@ interface CrackNotifierApi: CrackApi, UserApi {
     companion object {
         fun create(retrofitBuilder: Retrofit.Builder): CrackNotifierApi {
             return retrofitBuilder
-                .baseUrl("http://${BuildConfig.IP}:${BuildConfig.PORT}")
+                .baseUrl("http://${BuildConfig.ip}:${BuildConfig.port}")
                 .build()
                 .create()
         }

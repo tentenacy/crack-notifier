@@ -5,8 +5,7 @@ import com.tenutz.cracknotifier.web.api.dto.crack.CrackDetectRequest;
 import com.tenutz.cracknotifier.web.api.dto.robot.RobotCreateRequest;
 import com.tenutz.cracknotifier.web.api.dto.robot.RobotCreateResponse;
 import com.tenutz.cracknotifier.web.api.dto.robot.RobotDetailsResponse;
-import com.tenutz.cracknotifier.web.api.dto.user.UserDetailsResponse;
-import com.tenutz.cracknotifier.web.api.exception.io.CIOException;
+import com.tenutz.cracknotifier.web.api.exception.io.CIOException.CMLCommunicationException;
 import com.tenutz.cracknotifier.web.api.service.CrackService;
 import com.tenutz.cracknotifier.web.api.service.RobotService;
 import com.tenutz.cracknotifier.web.api.service.cloud.FileUploadService;
@@ -35,34 +34,28 @@ public class RobotApiController {
 
     @PostMapping("/{robotId}/cracks")
     public ResponseEntity<Void> detect(@PathVariable String robotId, CrackDetectRequest crackDetectRequest) {
-
         //ML 서버에 균열 판단 요청
         PredictionMLResponse predictionMLResponse;
-
         try {
             predictionMLResponse = mlClient.predict(crackDetectRequest.getImage());
         } catch (IOException e) {
-            throw new CIOException.CMLCommunicationException();
+            throw new CMLCommunicationException();
         }
+
+        log.info("accuracy = "+predictionMLResponse.getAccuracy());
 
         //균열 판단율로부터 균열 등록 결정
         if(predictionMLResponse.getAccuracy() >= 50.0) {
-
             String imageUrl = fileUploadService.upload(crackDetectRequest.getImage());
-
             crackService.create(robotId,
                 new CrackCreateRequest(
                     predictionMLResponse.getAccuracy(),
                     imageUrl,
                     crackDetectRequest
             ));
-
             return ResponseEntity.created(URI.create("")).build();
-
         } else {
-
             return ResponseEntity.noContent().build();
-
         }
     }
 

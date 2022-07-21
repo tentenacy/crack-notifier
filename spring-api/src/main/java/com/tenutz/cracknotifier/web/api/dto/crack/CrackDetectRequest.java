@@ -1,13 +1,11 @@
 package com.tenutz.cracknotifier.web.api.dto.crack;
 
-import com.tenutz.cracknotifier.domain.common.Address;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Embedded;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 

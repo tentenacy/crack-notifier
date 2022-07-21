@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_signup.xml"
     app:startDestination="@id/signupInput1Fragment">
 
     <fragment
         android:id="@+id/signupInput1Fragment"
         android:name="com.tenutz.cracknotifier.ui.signup.input1.SignupInput1Fragment"
-        android:label="SignupInput1Fragment" >
+        android:label="SignupInput1Fragment"
+        tools:layout="@layout/fragment_signup_input_1">
         <action
             android:id="@+id/action_signupInput1Fragment_to_signupInput2Fragment"
             app:destination="@id/signupInput2Fragment"
@@ -19,7 +21,8 @@
     <fragment
         android:id="@+id/signupInput2Fragment"
         android:name="com.tenutz.cracknotifier.ui.signup.input2.SignupInput2Fragment"
-        android:label="SignupInput2Fragment" >
+        android:label="SignupInput2Fragment"
+        tools:layout="@layout/fragment_signup_input_2">
         <action
             android:id="@+id/action_signupInput2Fragment_to_signupInput3Fragment"
             app:destination="@id/signupInput3Fragment"
@@ -31,5 +34,6 @@
     <fragment
         android:id="@+id/signupInput3Fragment"
         android:name="com.tenutz.cracknotifier.ui.signup.input3.SignupInput3Fragment"
-        android:label="SignupInput3Fragment" />
+        android:label="SignupInput3Fragment"
+        tools:layout="@layout/fragment_signup_input_3"/>
 </navigation>
