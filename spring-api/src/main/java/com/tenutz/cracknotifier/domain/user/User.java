@@ -62,6 +62,8 @@ public class User extends BaseTimeEntity implements UserDetails {
 
     private String provider;
 
+    private String fcmToken;
+
     public static User create(String email, String password, String username) {
         User user = new User();
         user.setEmail(email);
@@ -87,6 +89,10 @@ public class User extends BaseTimeEntity implements UserDetails {
 
     public void deregisterRobot() {
         setRobot(null);
+    }
+
+    public void updateFcmToken(String fcmToken) {
+        setFcmToken(fcmToken);
     }
 
     @Override

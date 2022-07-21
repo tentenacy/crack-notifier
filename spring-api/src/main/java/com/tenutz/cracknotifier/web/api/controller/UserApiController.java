@@ -16,6 +16,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 @RequestMapping("/users")
@@ -74,5 +76,10 @@ public class UserApiController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deregisterUserRobot() {
         robotService.deregisterUserRobot();
+    }
+
+    @PostMapping("/fcm-token")
+    public void registerFcmToken(@Valid @RequestBody FcmTokenRegisterRequest request) {
+        userService.registerFcmToken(request);
     }
 }

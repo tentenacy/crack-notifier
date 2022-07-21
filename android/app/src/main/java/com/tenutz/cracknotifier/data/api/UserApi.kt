@@ -1,10 +1,7 @@
 package com.tenutz.cracknotifier.data.api
 
 import com.tenutz.cracknotifier.data.api.dto.common.TokenResponse
-import com.tenutz.cracknotifier.data.api.dto.user.LoginRequest
-import com.tenutz.cracknotifier.data.api.dto.user.ReissueRequest
-import com.tenutz.cracknotifier.data.api.dto.user.SignupRequest
-import com.tenutz.cracknotifier.data.api.dto.user.UserDetailsResponse
+import com.tenutz.cracknotifier.data.api.dto.user.*
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.Body
@@ -25,4 +22,7 @@ interface UserApi {
 
     @GET("/users/details")
     fun userDetails(): Single<UserDetailsResponse>
+
+    @POST("/users/fcm-token")
+    fun registerFcmToken(@Body request: FcmTokenRegisterRequest): Single<Unit>
 }

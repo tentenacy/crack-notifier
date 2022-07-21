@@ -1,11 +1,17 @@
 package com.tenutz.cracknotifier.ui.root
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
+import com.orhanobut.logger.Logger
 import com.tenutz.cracknotifier.R
+import com.tenutz.cracknotifier.data.api.dto.user.FcmTokenRegisterRequest
 import com.tenutz.cracknotifier.databinding.FragmentRootBinding
 import com.tenutz.cracknotifier.ui.root.cracks.CracksFragment
 import com.tenutz.cracknotifier.ui.root.robotcurrentsituation.RobotCurrentSituationFragment
@@ -18,6 +24,8 @@ class RootFragment: Fragment() {
 
     private var _binding: FragmentRootBinding? = null
     val binding: FragmentRootBinding get() = _binding!!
+
+    private val viewModel: RootViewModel by viewModels()
 
     private lateinit var cracksFragment: CracksFragment
     private lateinit var worksFragment: WorksFragment
@@ -60,6 +68,20 @@ class RootFragment: Fragment() {
 
         initFragments()
         selectFragment(cracksFragment)
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("TAG", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            Logger.d("token: ${token}")
+            viewModel.registerFcmToken(FcmTokenRegisterRequest(token))
+        })
     }
 
     override fun onCreateView(

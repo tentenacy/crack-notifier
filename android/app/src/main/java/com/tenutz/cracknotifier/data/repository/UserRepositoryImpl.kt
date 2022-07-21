@@ -2,10 +2,7 @@ package com.tenutz.cracknotifier.data.repository
 
 import com.tenutz.cracknotifier.data.api.CrackNotifierApi
 import com.tenutz.cracknotifier.data.api.dto.common.TokenResponse
-import com.tenutz.cracknotifier.data.api.dto.user.LoginRequest
-import com.tenutz.cracknotifier.data.api.dto.user.ReissueRequest
-import com.tenutz.cracknotifier.data.api.dto.user.SignupRequest
-import com.tenutz.cracknotifier.data.api.dto.user.UserDetailsResponse
+import com.tenutz.cracknotifier.data.api.dto.user.*
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
@@ -23,4 +20,6 @@ class UserRepositoryImpl @Inject constructor(
     override fun reissue(request: ReissueRequest): Single<TokenResponse> = crackNotifierApi.reissue(request)
 
     override fun details(): Single<UserDetailsResponse> = crackNotifierApi.userDetails()
+
+    override fun registerFcmToken(request: FcmTokenRegisterRequest): Single<Unit> = crackNotifierApi.registerFcmToken(request)
 }

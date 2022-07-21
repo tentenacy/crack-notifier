@@ -1,11 +1,9 @@
 package com.tenutz.cracknotifier.data.repository
 
 import com.tenutz.cracknotifier.data.api.dto.common.TokenResponse
-import com.tenutz.cracknotifier.data.api.dto.user.LoginRequest
-import com.tenutz.cracknotifier.data.api.dto.user.ReissueRequest
-import com.tenutz.cracknotifier.data.api.dto.user.SignupRequest
-import com.tenutz.cracknotifier.data.api.dto.user.UserDetailsResponse
+import com.tenutz.cracknotifier.data.api.dto.user.*
 import io.reactivex.rxjava3.core.Single
+import retrofit2.http.Body
 
 interface UserRepository {
 
@@ -16,4 +14,6 @@ interface UserRepository {
     fun reissue(request: ReissueRequest): Single<TokenResponse>
 
     fun details(): Single<UserDetailsResponse>
+
+    fun registerFcmToken(request: FcmTokenRegisterRequest): Single<Unit>
 }
