@@ -9,8 +9,10 @@ import com.tenutz.cracknotifier.data.repository.robot.RobotRepository
 import com.tenutz.cracknotifier.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,7 +38,10 @@ class RobotCurrentSituationViewModel @Inject constructor(
     }
 
     fun robotDrivingInformation() {
-        robotRepository.drivingInformation()
+        Observable.interval(1, TimeUnit.SECONDS)
+            .flatMap {
+                robotRepository.drivingInformation().toObservable()
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

@@ -280,11 +280,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginHorizontal="16dp"
-                    android:text='@{"("+String.valueOf(crack.latitude)+", "+String.valueOf(crack.longitude)+")"}'
+                    android:text='@{"("+String.valueOf(crack.latitude)+"°, "+String.valueOf(crack.longitude)+"°)"}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text_crack_label_latlng"
-                    tools:text="(37.338853, 126.734178)" />
+                    tools:text="(37.338853°, 126.734178°)" />
 
                 <View
                     android:id="@+id/view_crack_divider_5"
@@ -317,12 +317,12 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginBottom="24dp"
-                    android:text='@{"("+String.valueOf(crack.x)+"m, "+String.valueOf(crack.y)+"m)"}'
+                    android:text='@{"("+String.valueOf(crack.x)+"cm, "+String.valueOf(crack.y)+"cm)"}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text_crack_label_xy"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    tools:text="(0.9m, 1.5m)" />
+                    tools:text="(90cm, 150cm)" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
